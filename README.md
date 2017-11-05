@@ -1,6 +1,10 @@
 # Jugend-Forscht
-Private Jufo Repository
+Privates Jufo Repository
 
-# TODO
- 1. Add Comments to Kinect\main
- 2. Create Class-Maps
+# Übersicht
+Android: Fertig
+Arbeit: Zuende zu schreiben
+Bilder: Noch keine Bilder vom neusten Prototyp
+Kinect: Fertig
+Präsentation: PowerPoint, Plakate, Vortrag, usw. noch nicht begonnen
+Raspi: Ungetestet
