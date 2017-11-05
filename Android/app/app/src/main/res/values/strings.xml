@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JuForge Alltagshilfe</string>
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="record_audio_is_required">String</string>
+    <string name="stop">Stop</string>
+    <string name="weiter">Weiter</string>
+    <string name="hint">Produkt</string>
+    <string name="add">Hinzufügen</string>
+</resources>
