@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(context, "Roboter wird gestoppt...", Toast.LENGTH_LONG).show();
                             break;
                         case 1:
-                            onSend("Weiter");
+                            onSend("Go");
                             Toast.makeText(context, "Roboter fährt weiter...", Toast.LENGTH_SHORT).show();
                             break;
                         default:
@@ -240,18 +240,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(context, "Roboter wird gestoppt...", Toast.LENGTH_LONG).show();
                             break;
                         case 1:
-                            onSend("Weiter");
+                            onSend("Go");
                             Toast.makeText(context, "Roboter fährt weiter...", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 2:
-                            onSend("Klappe_auf");
-                            Toast.makeText(context, "Klappe wird geöffnet...", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 3:
-                            onSend("Klappe_zu");
-                            Toast.makeText(context, "Klappe wird geschloßen...", Toast.LENGTH_SHORT).show();
-                            break;
-                        default:
                             break;
                     }
                 } catch (IOException e) {
@@ -393,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
     private void findPi() {
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         for (BluetoothDevice device : pairedDevices) {
-            if (device.getName().equals("dex"))
+            if (device.getName().equals("jufo"))
                 mDevice = device;
         }
     }
@@ -411,6 +401,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             message = message.toLowerCase();
             sender.println(message);
+            sender.println(message);
+            sender.flush();
             sender.flush();
         } catch (IllegalStateException | NullPointerException e) {
             e.printStackTrace();
