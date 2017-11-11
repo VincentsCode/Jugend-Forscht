@@ -6,7 +6,7 @@ import java.net.Socket;
 import edu.ufl.digitalworlds.j4k.J4KSDK;
 import edu.ufl.digitalworlds.j4k.Skeleton;
 
-public class main {
+public class Sensor {
 
 	// Bodyparts
 	static int head = Skeleton.HEAD;
@@ -41,7 +41,7 @@ public class main {
 	// Values
 	static float[] position = new float[3];
 	static double angle;
-	static double distance;
+	static float distance;
 	
 	static int id = -1;
 	static boolean scan = false;
@@ -50,13 +50,13 @@ public class main {
 	
 	static Skeleton s = null;
 	
-	//Identifier
+	// Identifier
 	static float headHeight = -1;
 	
 	static Socket client;
 	static DataOutputStream os;
 	
-	//Settings
+	// Settings
 	static boolean showImage = true;
 
 	public static void main(String[] args) {
@@ -65,7 +65,7 @@ public class main {
 			
 			//Create Instance of Kinect
 			J4KSDK j = new J4KSDK() {
-
+				
 				//Called when a Person is detected
 				@Override
 				public void onSkeletonFrameEvent (boolean[] skeleton_tracked, float[] joint_positions, float[] joint_orientations, byte[] joint_tracked) {
@@ -175,8 +175,8 @@ public class main {
 							distance = (int) Math.round(distance);
 							
 							//Print the Values and send them to the Raspberry Pi
-							System.out.println("Winkel: " + angle + "° " + "Distanz: " + distance + "cm");
-							sendToWlan(angle, distance);
+							System.out.println("Winkel: " + (int) angle + "° " + "Distanz: " + (int) distance + "cm");
+							sendToWlan((int) angle, (int)distance);
 							
 							//Wait 200 Milliseconds
 							try {
@@ -203,8 +203,7 @@ public class main {
 			};
 			
 			//Connects to the Raspberry Pi via Wlan
-			connect("127.0.0.1", 1337);
-//			connect("192.168.2.108", 1337);
+			connect("192.168.2.101", 1337);
 			
 			//Starts the Kinect-Sensor
 			j.start(J4KSDK.COLOR | J4KSDK.DEPTH | J4KSDK.SKELETON);
@@ -260,19 +259,12 @@ public class main {
 	}
 
 	//Sends a Angle and Distance to the Person to the Raspberry Pi
-	public static void sendToWlan(double angl, double dist) {
-		int i;
+	public static void sendToWlan(int angl, int dist) {
 		try {
-			String s = "#" + String.valueOf(Math.round(angl)) + "," + String.valueOf(Math.round(dist));
-
-			for (i = s.length(); i < 20; i++) {
-				s = s + "y";
-			}
-			os.writeChars(s);
-			os.flush();
-			System.out.println(s);
+			os.writeUTF(String.valueOf(angl) + "#" + String.valueOf(dist));
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(-1);
 		}
 	}
 
