@@ -21,4 +21,6 @@ Raspi: Ungetestet <br>
 
 4. Bilder vom neusten Prototypen machen, ausschneiden und in Arbeit einfügen <br>
 
-5. Präsentationen und Plakate vorbereiten
+5. Präsentationen und Plakate vorbereiten <br>
+
+6. Kommentare in Code schreiben
