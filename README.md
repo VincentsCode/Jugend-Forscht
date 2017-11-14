@@ -17,7 +17,7 @@ Raspi: Ungetestet <br>
    
 2. Arbeit schreiben <br>
 
-3. Neusten Prototypen testen und final machen <br>
+3. Neusten Prototypen testen und final machen <bold> Did it <bold> <br>
 
 4. Bilder vom neusten Prototypen machen, ausschneiden und in Arbeit einfügen <br>
 
