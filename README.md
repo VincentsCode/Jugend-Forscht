@@ -17,10 +17,16 @@ Raspi: Ungetestet <br>
    
 2. Arbeit schreiben <br>
 
-3. Neusten Prototypen testen und final machen <b> Did it </b> <br>
+3. Reset Funktion für Räder schreiben <br>
 
 4. Bilder vom neusten Prototypen machen, ausschneiden und in Arbeit einfügen <br>
 
 5. Präsentationen und Plakate vorbereiten <br>
 
-6. Kommentare in Code schreiben
+6. Kommentare in Code schreiben <br>
+
+7. Weitere Identifikationsmerkmale hinzufügen <br>
+
+8. Perfekte Geschwindigkeiten herausfinden (Lenkung & Fahrgeschwindigkeit)
+
+9. PowerBank für KinectSensor besorgen

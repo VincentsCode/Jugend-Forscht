@@ -23,7 +23,8 @@ public class ev3 {
 	boolean BTConnected = true; //false
 	boolean WlanConnected = false;
 
-	long speed = Long.MAX_VALUE;
+//	long speed = Long.MAX_VALUE;
+	long speed = 100;
 
 	ServerSocket server;
 	Socket client;
@@ -69,18 +70,21 @@ public class ev3 {
 						int i = WlanMessage.indexOf('#');
 						WlanMessage = WlanMessage.replace("#", "");
 						angle = Integer.valueOf(WlanMessage.substring(0, i));
+						angle = angle * -1;
 						distance = Integer.valueOf(WlanMessage.substring(i, WlanMessage.length()));
 						System.out.println("Angle: " + angle + "   Distance: " + distance);
 					} else {
 						System.out.println(WlanMessage);
 					}
+				
 					
-					if (angle < 90) {
-						mB.rotateTo(angle * 4, true);
-						mC.rotateTo(-angle * 4, false);
-					}
-					
-					if (distance > 80) {
+					if (distance > 10) {
+						
+						if (angle < 90) {
+							mB.rotateTo(-angle * 4, true);
+							mC.rotateTo(angle * 4, false);
+						}
+						
 						mA.backward();
 						mD.backward();
 					} else {
