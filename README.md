@@ -2,17 +2,17 @@
 Privates Jufo Repository
 
 # Übersicht
-Android: Fertig <br>
+Android: Features hinzufügen <br>
 Arbeit: Zuende schreiben <br>
 Bilder: Noch keine Bilder vom neusten Prototyp <br>
 Kinect: Fertig <br>
 Präsentation: PowerPoint, Plakate, Vortrag, usw. noch nicht begonnen <br>
-EV3: Funktioniert aber zu verbessern
+EV3: Verbessern (siehe TODO)
 
 # TODO
 
 1. Weitere Features (vor allem für ältere Menschen) zur App hinzufügen <br>
-	   -> Notruf / NotMail per Sprachbefehl <br>
+	   -> Notruf / NotMail per Sprachbefehl <br> 
 	   -> ... <br>
 2. Arbeit schreiben <br>
 3. Reset Funktion für Räder schreiben <br>
