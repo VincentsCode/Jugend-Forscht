@@ -1,5 +1,6 @@
 package jufo.vincent.de.app;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
@@ -40,6 +41,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
+@SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         list_editor = list_pref.edit();
         list_editor.apply();
 
-        //Gets the Settings and applies it to local variables
+        //Gets the Settings and assigns it to local variables
         settings_pref = getSharedPreferences("Einstellungen", 0);
         emergencyNumber = settings_pref.getString("Number", "");
         EmergencyMessage = settings_pref.getString("Message", "");
@@ -463,6 +465,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);

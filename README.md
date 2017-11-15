@@ -2,7 +2,7 @@
 Privates Jufo Repository
 
 # Übersicht
-Android: Features hinzufügen <br>
+Android: Features überlegen <br>
 Arbeit: Zuende schreiben <br>
 Bilder: Noch keine Bilder vom neusten Prototyp <br>
 Kinect: Fertig <br>
@@ -11,9 +11,7 @@ EV3: Verbessern (siehe TODO)
 
 # TODO
 
-1. Weitere Features (vor allem für ältere Menschen) zur App hinzufügen <br>
-	   -> Notruf / NotMail per Sprachbefehl <br> 
-	   -> ... <br>
+1. Ideen für weitere App-Features sammeln <br>
 2. Arbeit schreiben <br>
 3. Reset Funktion für Räder schreiben <br>
 4. Bilder vom neusten Prototypen machen, ausschneiden und in Arbeit einfügen <br>
