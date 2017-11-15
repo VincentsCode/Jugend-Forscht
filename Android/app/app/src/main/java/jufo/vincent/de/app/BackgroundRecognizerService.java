@@ -3,7 +3,6 @@ package jufo.vincent.de.app;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -52,6 +51,16 @@ public class BackgroundRecognizerService extends Service {
                     boolean found = false;
                     for (int i = 0; i < results.size() && !found; i++) {
 
+                        //Hotword for Emergency if enabled
+                        if (getSharedPreferences("Einstellungen", 0).getBoolean("EmergencyOn", false)) {
+                            if (results.get(i).toLowerCase().contains(getSharedPreferences("Einstellungen", 0).getString("Hotword", "").toLowerCase())) {
+                                found = true;
+                                MainActivity.sendEmergencySMS();
+                                Toast.makeText(BackgroundRecognizerService.this, "Notfall-SMS wird gesendet...", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+
                         //Stop
                         if (results.get(i).toLowerCase().contains("Stop".toLowerCase())) {
                             found = true;
@@ -95,6 +104,13 @@ public class BackgroundRecognizerService extends Service {
                                 MainActivity.removeItem(finalResult);
                             }
                         }
+
+                        if (results.get(i).toLowerCase().contains("Liste leeren".toLowerCase())) {
+                            found = true;
+                            MainActivity.removeAll();
+                        }
+
+
 
                         //Produkt-Liste vorlesen
                         if (results.get(i).toLowerCase().contains("Liste vorlesen".toLowerCase())) {
