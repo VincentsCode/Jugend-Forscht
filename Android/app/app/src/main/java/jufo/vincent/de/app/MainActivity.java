@@ -16,6 +16,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,13 +62,19 @@ public class MainActivity extends AppCompatActivity {
 
     long lastClick;
 
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    SharedPreferences list_pref;
+    SharedPreferences.Editor list_editor;
+
+    SharedPreferences settings_pref;
 
     static NotificationManager Manager;
     static NotificationCompat.Builder Builder;
 
-    Context context;
+    static Context context;
+
+    boolean enableSpeechRecognition = true;
+    static String emergencyNumber;
+    static String EmergencyMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +83,15 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Einkaufsliste");
 
         //Gets old List
-        pref = getSharedPreferences("Einkaufsliste", 0);
-        editor = pref.edit();
-        editor.apply();
+        list_pref = getSharedPreferences("Einkaufsliste", 0);
+        list_editor = list_pref.edit();
+        list_editor.apply();
+
+        //Gets the Settings and applies it to local variables
+        settings_pref = getSharedPreferences("Einstellungen", 0);
+        emergencyNumber = settings_pref.getString("Number", "");
+        EmergencyMessage = settings_pref.getString("Message", "");
+        enableSpeechRecognition = settings_pref.getBoolean("SpeechOn", true);
 
         context = this;
 
@@ -164,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Adds ListItems from SharedPreferences to List
-        int len = pref.getInt("length", 1);
+        int len = list_pref.getInt("length", 1);
         for (int i = 0; i < len; i++) {
-            arrayList.add(0, pref.getString(String.valueOf(i), "Error"));
+            arrayList.add(0, list_pref.getString(String.valueOf(i), "Error"));
         }
         Collections.reverse(arrayList);
 
@@ -190,10 +205,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        findPi();
+        findEV3();
 
+        //Checks if the Devices is connected
         if (mDevice == null) {
-            Toast.makeText(this, "RPi nicht gefunden!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "EV3 nicht gefunden!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Verbunden.", Toast.LENGTH_SHORT).show();
         }
@@ -262,8 +278,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Starts the SpeechRecognizerService
-        startService();
+        //Starts the SpeechRecognizerService if it's not disabled in the Settings
+        if (enableSpeechRecognition) {
+            startService();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     //Creates a Notification with List of Items to buy
@@ -371,16 +409,16 @@ public class MainActivity extends AppCompatActivity {
     //Saves all Items from List to SharedPreferences
     public void saveItems() {
         for(int i = 0; i < arrayList.size(); i++) {
-            editor.putString(String.valueOf(i), arrayAdapter.getItem(i));
+            list_editor.putString(String.valueOf(i), arrayAdapter.getItem(i));
         }
-        editor.putInt("length", arrayList.size());
-        editor.apply();
-        editor.commit();
+        list_editor.putInt("length", arrayList.size());
+        list_editor.apply();
+        list_editor.commit();
         notificate();
     }
 
-    //Finds the Raspberry Pi in a List of available Bluetooth-Devices
-    private void findPi() {
+    //Finds the EV3 with the name "jufo" in the List of available Bluetooth-Devices
+    private void findEV3() {
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         for (BluetoothDevice device : pairedDevices) {
             if (device.getName().equals("jufo"))
@@ -396,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Sends a Message to the Raspberry Pi
+    //Sends a Message to the EV3
     public static void onSend(String message) throws IOException {
         try {
             message = message.toLowerCase();
@@ -409,7 +447,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Creates a Bluetooth Socket to send Messages to the Raspberry Pi
+    //Creates a Bluetooth Socket to send Messages to the EV3
     public static void createSocket() throws IOException {
         try {
             UUID uuid = UUID.fromString(MY_UUID);
@@ -423,6 +461,11 @@ public class MainActivity extends AppCompatActivity {
         OutputStream os = mSocket.getOutputStream();
         sender = new PrintWriter(new OutputStreamWriter(os), true);
 
+    }
+
+    public static void sendEmergencySMS() {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
     }
 
     @Override
