@@ -3,6 +3,7 @@ package jufo.vincent.de.app;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -31,11 +32,12 @@ public class BackgroundRecognizerService extends Service {
             setSpeechListener();
         }
 
-        Toast.makeText(BackgroundRecognizerService.this, "Spracherkennung gestartet", Toast.LENGTH_SHORT).show();
+        Log.d("Spracherkennung", "gestartet");
+
     }
 
     public void onDestroy() {
-        //End SpeechRecognizerManager
+        //Ends the SpeechRecognizerManager
         if (mSpeechManager != null) {
             mSpeechManager.destroy();
             mSpeechManager = null;
@@ -44,80 +46,83 @@ public class BackgroundRecognizerService extends Service {
     }
 
     private void setSpeechListener() {
-        //Create an Instance of SpeechRecognizerManager.class and listen for Results
+        //Creates an Instance of SpeechRecognizerManager.class and listens for Results
         mSpeechManager = new SpeechRecognizerManager(this, new SpeechRecognizerManager.onResultsReady() {
             public void onResults(ArrayList<String> results) {
                 if (results != null && results.size() > 0) {
                     boolean found = false;
+                    //Iterates through all found words
                     for (int i = 0; i < results.size() && !found; i++) {
 
-                        //Hotword for Emergency if enabled
-                        if (getSharedPreferences("Einstellungen", 0).getBoolean("EmergencyOn", false)) {
-                            if (results.get(i).toLowerCase().contains(getSharedPreferences("Einstellungen", 0).getString("Hotword", "").toLowerCase())) {
+                        //Filters the recorded words for Commands if enabled
+                        if (getSharedPreferences("Einstellungen", 0).getBoolean("SpeechOn", true)) {
+                            //Hotword for Emergency if enabled
+                            if (getSharedPreferences("Einstellungen", 0).getBoolean("EmergencyOn", false)) {
+                                if (results.get(i).toLowerCase().contains(getSharedPreferences("Einstellungen", 0).getString("Hotword", "").toLowerCase())) {
+                                    found = true;
+                                    MainActivity.sendEmergencySMS();
+                                    Toast.makeText(BackgroundRecognizerService.this, "Notfall-SMS wird gesendet...", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+
+                            //Stop
+                            if (results.get(i).toLowerCase().contains("Stop".toLowerCase())) {
                                 found = true;
-                                MainActivity.sendEmergencySMS();
-                                Toast.makeText(BackgroundRecognizerService.this, "Notfall-SMS wird gesendet...", Toast.LENGTH_LONG).show();
+                                try {
+                                    MainActivity.onSend("stop");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(BackgroundRecognizerService.this, "Roboter wird gestoppt...", Toast.LENGTH_LONG).show();
                             }
-                        }
 
-
-                        //Stop
-                        if (results.get(i).toLowerCase().contains("Stop".toLowerCase())) {
-                            found = true;
-                            try {
-                                MainActivity.onSend("stop");
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            //Weiter oder Starten
+                            if (results.get(i).toLowerCase().contains("Weiter".toLowerCase()) || results.get(i).toLowerCase().contains("Start".toLowerCase())) {
+                                found = true;
+                                try {
+                                    MainActivity.onSend("go");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(BackgroundRecognizerService.this, "Roboter fährt los...", Toast.LENGTH_SHORT).show();
                             }
-                            Toast.makeText(BackgroundRecognizerService.this, "Roboter wird gestoppt...", Toast.LENGTH_LONG).show();
-                        }
 
-                        //Weiter oder Starten
-                        if (results.get(i).toLowerCase().contains("Weiter".toLowerCase()) || results.get(i).toLowerCase().contains("Start".toLowerCase())) {
-                            found = true;
-                            try {
-                                MainActivity.onSend("go");
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            //Produkt hinzufügen
+                            if (results.get(i).toLowerCase().contains("hinzufügen".toLowerCase())) {
+                                found = true;
+                                String result = results.get(i);
+                                finalResult = result.replace("hinzufügen", "");
+                                finalResult = finalResult.trim();
+                                MainActivity.addItem(finalResult);
                             }
-                            Toast.makeText(BackgroundRecognizerService.this, "Roboter fährt los...", Toast.LENGTH_SHORT).show();
-                        }
 
-                        //Produkt hinzufügen
-                        if (results.get(i).toLowerCase().contains("hinzufügen".toLowerCase())) {
-                            found = true;
-                            String result = results.get(i);
-                            finalResult = result.replace("hinzufügen", "");
-                            finalResult = finalResult.trim();
-                            MainActivity.addItem(finalResult);
-                        }
+                            //Produkt entfernen
+                            if (results.get(i).toLowerCase().contains("entfernen".toLowerCase())) {
+                                found = true;
+                                String result = results.get(i);
+                                finalResult = result.replace("entfernen", "");
+                                finalResult = finalResult.trim();
+                                if (finalResult.toLowerCase().equals("alles")) {
+                                    MainActivity.removeAll();
+                                } else {
+                                    MainActivity.removeItem(finalResult);
+                                }
+                            }
 
-                        //Produkt entfernen
-                        if (results.get(i).toLowerCase().contains("entfernen".toLowerCase())) {
-                            found = true;
-                            String result = results.get(i);
-                            finalResult = result.replace("entfernen", "");
-                            finalResult = finalResult.trim();
-                            if (finalResult.toLowerCase().equals("alles")) {
+                            if (results.get(i).toLowerCase().contains("Liste leeren".toLowerCase())) {
+                                found = true;
                                 MainActivity.removeAll();
-                            } else {
-                                MainActivity.removeItem(finalResult);
+                            }
+
+
+
+                            //Produkt-Liste vorlesen
+                            if (results.get(i).toLowerCase().contains("Liste vorlesen".toLowerCase())) {
+                                found = true;
+                                MainActivity.readList();
                             }
                         }
-
-                        if (results.get(i).toLowerCase().contains("Liste leeren".toLowerCase())) {
-                            found = true;
-                            MainActivity.removeAll();
-                        }
-
-
-
-                        //Produkt-Liste vorlesen
-                        if (results.get(i).toLowerCase().contains("Liste vorlesen".toLowerCase())) {
-                            found = true;
-                            MainActivity.readList();
-                        }
-
                     }
                 }
             }
