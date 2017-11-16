@@ -4,9 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
 
 class PermissionHandler {
 
@@ -23,5 +21,6 @@ class PermissionHandler {
         }
         return false;
     }
+
 
 }

@@ -1,5 +1,6 @@
 package jufo.vincent.de.app;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +42,6 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
-@SuppressWarnings("deprecation")
 @SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
 
@@ -67,16 +68,16 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences list_pref;
     SharedPreferences.Editor list_editor;
 
-    SharedPreferences settings_pref;
+    static SharedPreferences settings_pref;
 
     static NotificationManager Manager;
     static NotificationCompat.Builder Builder;
 
     static Context context;
 
-    boolean enableSpeechRecognition = true;
     static String emergencyNumber;
     static String EmergencyMessage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,16 +85,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Einkaufsliste");
 
+
+
         //Gets old List
         list_pref = getSharedPreferences("Einkaufsliste", 0);
         list_editor = list_pref.edit();
         list_editor.apply();
 
-        //Gets the Settings and assigns it to local variables
-        settings_pref = getSharedPreferences("Einstellungen", 0);
-        emergencyNumber = settings_pref.getString("Number", "");
-        EmergencyMessage = settings_pref.getString("Message", "");
-        enableSpeechRecognition = settings_pref.getBoolean("SpeechOn", true);
+
 
         context = this;
 
@@ -280,10 +279,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Starts the SpeechRecognizerService if it's not disabled in the Settings
-        if (enableSpeechRecognition) {
-            startService();
-        }
+        //Starts the SpeechRecognizerService
+        startService();
+
     }
 
     @Override
@@ -358,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
             if (!arrayList.contains(item) && !arrayList.contains(item.toLowerCase())) {
                 arrayList.add(0, item);
                 arrayAdapter.notifyDataSetChanged();
-                Toast.makeText(Builder.mContext, item + " hinzugefüt.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Builder.mContext, item + " hinzugefügt.", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -433,6 +431,10 @@ public class MainActivity extends AppCompatActivity {
         if (PermissionHandler.checkPermission(this, PermissionHandler.RECORD_AUDIO)) {
             Intent i = new Intent(this, BackgroundRecognizerService.class);
             startService(i);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
+            Intent i = new Intent(this, BackgroundRecognizerService.class);
+            startService(i);
         }
     }
 
@@ -453,20 +455,27 @@ public class MainActivity extends AppCompatActivity {
     public static void createSocket() throws IOException {
         try {
             UUID uuid = UUID.fromString(MY_UUID);
-            mSocket = mDevice.createRfcommSocketToServiceRecord(uuid);
+            if (mDevice != null) {
+                mSocket = mDevice.createRfcommSocketToServiceRecord(uuid);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-        mSocket.connect();
-        OutputStream os = mSocket.getOutputStream();
-        sender = new PrintWriter(new OutputStreamWriter(os), true);
+        if (mSocket != null) {
+            BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+            mSocket.connect();
+            OutputStream os = mSocket.getOutputStream();
+            sender = new PrintWriter(new OutputStreamWriter(os), true);
+        }
 
     }
 
     //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
+        //Gets the Settings and assigns it to local variables
+        settings_pref = context.getSharedPreferences("Einstellungen", 0);
+        emergencyNumber = settings_pref.getString("Number", "");
+        EmergencyMessage = settings_pref.getString("Message", "");
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
     }

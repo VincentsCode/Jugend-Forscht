@@ -1,9 +1,9 @@
 package jufo.vincent.de.app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -24,12 +24,16 @@ public class SettingsActivity extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
 
+    Context c;
+
     @SuppressLint("CommitPrefEdits")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         setTitle("Einstellungen");
+
+        c = this;
 
         pref = getSharedPreferences("Einstellungen", 0);
         editor = pref.edit();
@@ -57,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
                 txt_message.setText("");
                 switch_speech.setChecked(true);
                 switch_emergency.setChecked(false);
+                saveValues();
             }
         });
 
@@ -75,6 +80,14 @@ public class SettingsActivity extends AppCompatActivity {
                     txt_number.setText("");
                     txt_message.setText("");
                 }
+
+            }
+        });
+
+        switch_speech.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                saveValues();
             }
         });
 
