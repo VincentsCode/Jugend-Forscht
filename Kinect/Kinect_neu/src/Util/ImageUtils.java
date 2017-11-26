@@ -24,7 +24,7 @@ public class ImageUtils {
 		JFrame frame = new JFrame();
 		frame.setLayout(new FlowLayout());
 		frame.setTitle("Images");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(0, 0, image.getWidth(), image.getHeight());
 		ImageIcon icon = new ImageIcon(image);
 		JLabel label = new JLabel();
@@ -35,22 +35,24 @@ public class ImageUtils {
 
 	public static void showImages(BufferedImage[] images) {
 		JFrame frame = new JFrame();
+		int w = 0;
+		int h = 0;
 		frame.setLayout(new FlowLayout());
 		frame.setTitle("Images");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(0, 0, 1900, 1080);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		for (int i = 0; i < images.length; i++) {
 			ImageIcon icon = new ImageIcon(images[i]);
 			JLabel label = new JLabel();
 			label.setIcon(icon);
 			frame.add(label);
+			w += images[i].getWidth();
+			h += images[i].getHeight();
 		}
-
+		frame.setBounds(0, 0, w, h);
 		frame.setVisible(true);
 	}
-
+	
 	public static BufferedImage resize(BufferedImage imageToScale, int width, int height) {
 		BufferedImage scaledImage = null;
 		if (imageToScale != null) {

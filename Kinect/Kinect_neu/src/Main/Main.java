@@ -2,7 +2,6 @@ package Main;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -19,7 +18,6 @@ import org.opencv.imgproc.Imgproc;
 import KinectPV2.KinectPV2;
 import KinectPV2.Skeleton;
 import Util.ImageUtils;
-import Util.MathUtils;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -31,7 +29,7 @@ public class Main extends PApplet {
 
 	static JFrame imageFrame = new JFrame();
 	static JLabel imageLabel = new JLabel();
-	static JLabel fpsLabel = new JLabel();
+	static JLabel colorLabel = new JLabel();
 	static JLabel foundLabel = new JLabel();
 	
 	static KinectPV2 kinect;
@@ -40,11 +38,6 @@ public class Main extends PApplet {
 	static boolean tracked = false;
 	static boolean retrack = false;
 	static boolean useDefaultTracker = true;
-	
-	static ArrayList<listSkeleton> trackedSkeletons = new ArrayList<>();
-	static int id;
-	
-	static int minTrackTime = 10000; // minimal track time in millis
 	
 	static long retrackStartTime;
 	static long fps;
@@ -61,119 +54,116 @@ public class Main extends PApplet {
 	static Size imageSize = new Size(width, height);
 	
 	static Mat frame = new Mat();
+	static Mat frontImage;
+	static Mat rightImage;
+	static Mat leftImage;
+	static Mat backImage;
+	
+	static int id;
+	
+	
+	private static Mat getImage() throws InterruptedException {
+		
+		while (true) {
+			Skeleton[] skeletons = kinect.getSkeleton3d();
+			ArrayList<listSkeleton> trackedSkeletons = new ArrayList<>();
+			
+			for (int i = 0; i < skeletons.length; i++) {
+				if (skeletons[i].isTracked()) {
+					if (skeletons[i].getJoints()[0].getX() < 10 && skeletons[i].getJoints()[0].getX() > -10) {
+						trackedSkeletons.add(new listSkeleton(skeletons[i], i));
+					}	
+				}
+			}
+			
+			if (trackedSkeletons.size() == 0) {
+				System.err.println("Bitte platzieren sie sich vor dem Roboter!");
+				Thread.sleep(1000);
+			} else if (trackedSkeletons.size() == 1) {
+				id = trackedSkeletons.get(0).id;
+				return ImageUtils.imageToMat(ImageUtils.resize((BufferedImage) kinect.getCoordinateRGBDepthImage().getImage(), width, height));
+			} else {
+				System.err.println("Es stehen zu viele Personen vor dem Roboter!");
+				Thread.sleep(1000);
+			}	
+		}
+		
+	}
 
+	
 	public static void main(String[] args) {
 
-		Main t = new Main();
-		t.setup();
+		Main main = new Main();
+		main.setup();
 		
-		System.out.println("Bitte gerade vor dem Roboter platzieren.");
-		long startTime = System.currentTimeMillis();
-
-		while (true) {
-			long a = System.currentTimeMillis();
+		try {
+			System.out.println("Bitte stellen sie sich gerade vor den Roboter.");
+			Thread.sleep(5000);
+			frontImage = getImage();
 			
-			Skeleton[] skeletons = kinect.getSkeleton3d();
+			System.out.println("Bitte mit der Rechten Seite zum Roboter vor dem Roboter platzieren.");
+			Thread.sleep(3000);
+			rightImage = getImage();
 			
-			if (useDefaultTracker) {
-				if (!tracked) {
-					if (!retrack) {
-						for (int i = 0; i < skeletons.length; i++) {
-							if (skeletons[i].isTracked()) {
-								if (skeletons[i].getJoints()[0].getX() < 10 && skeletons[i].getJoints()[0].getX() > -10) {
-									trackedSkeletons.add(new listSkeleton(skeletons[i], i));
-								}	
-							}
-						}
-					} else {
-						for (int i = 0; i < skeletons.length; i++) {
-							if (skeletons[i].isTracked()) {
-								
-								if (true) {//TODO: Replace true by Characteristics
-									trackedSkeletons.add(new listSkeleton(skeletons[i], i));
-								}
-							}
-						}
-					}
-					
-					if (trackedSkeletons.size() == 0) {
-						
-					} else if (trackedSkeletons.size() == 1 ) {
-						// TODO: Define characteristics to refind person (x = trackedSkeletons.get(0).skeleton.getJoints(); ...) (-> Körpergröße errechnen)
-						id = trackedSkeletons.get(0).id;
-						trackedSkeletons = new ArrayList<>();
-						tracked = true;
-						System.out.println("Tracked: ID=" + id);
-						if (retrack) {
-							retrack = false;
-							startTime = startTime + System.currentTimeMillis() - retrackStartTime;
-							System.out.println("Retracked: ID=" + id);
-						}
-					} else {
-						System.out.println("Es stehen zu viele Personen vor dem Roboter!");
-						trackedSkeletons = new ArrayList<>();
-					}
-					
-				} else if (skeletons[id].isTracked()){
-					double xPosition = (skeletons[id].getJoints()[0].getX() + skeletons[id].getJoints()[1].getX() + skeletons[id].getJoints()[20].getX()) / 3  * 100;
-					double zPosition = (skeletons[id].getJoints()[0].getZ() + skeletons[id].getJoints()[1].getZ() + skeletons[id].getJoints()[20].getZ()) / 3  * 100;
-					
-					System.out.println("X-Position: " + xPosition + "; " + "Distanz: " + zPosition);
-					ConnectionManager.send(MathUtils.getAngle(new Line2D.Double(0.0f, 0.0f, xPosition, zPosition), new Line2D.Double(0.0f, 0.0f, 0.0f, Float.MAX_VALUE)), zPosition);
-					if (savedImages.size() < 20) {
-						savedImages.add(ImageUtils.imageToMat(ImageUtils.resize((BufferedImage) kinect.getCoordinateRGBDepthImage().getImage(), width, height)));
-					}
-				} else {
-					if (System.currentTimeMillis() - startTime < minTrackTime) {
-						if (tracked && !retrack) {
-							retrackStartTime = System.currentTimeMillis();
-							tracked = false;
-							retrack = true;
-							System.out.println("Retracking...");
-						}
-
-					} else {
-						useDefaultTracker = false;
-						ObjectRecognizer.learn(savedImages.toArray(new Mat[20]));
-						System.out.println("Switched to OpenCV-Tracker");
-					}
-				}
-				BufferedImage colorImage = (BufferedImage) kinect.getCoordinateRGBDepthImage().getImage();
-				updateImage(colorImage);
-				
-			} else {
-				// TODO: Optimize || Add on fail -> Use other learned Images & Optimize Time
-				BufferedImage colorImage = (BufferedImage) kinect.getColorImage().getImage();
-				frame = ImageUtils.imageToMat(colorImage);
-				Imgproc.resize(frame, frame, imageSize);
-				frame = ObjectRecognizer.process(frame, 0);
-				if (frame != null) {
-					BufferedImage img = ImageUtils.matToImage(frame);
-					updateImage(img);
-					foundLabel.setText("Object found!");
-					foundLabel.setForeground(new Color(0, 255, 0));
-				} else {
-					foundLabel.setText("No Object found!");
-					foundLabel.setForeground(new Color(255, 0, 0));
-				}
-				
-
-			}
+			System.out.println("Bitte mit der Linken Seite zum Roboter vor dem Roboter platzieren.");
+			Thread.sleep(3000);
+			leftImage = getImage();
 			
-			fps = Math.round((1000.0 / (System.currentTimeMillis() - a)));
-			fpsLabel.setText(String.valueOf(fps));
+			System.out.println("Bitte stellen sie sich mit dem Rücken zum Roboter.");
+			Thread.sleep(3000);
+			backImage = getImage();
 			
-			if (fps < 30) {
-				fpsLabel.setForeground(new Color(255, 0, 0));
-			} else {
-				fpsLabel.setForeground(new Color(0, 255, 0));
-			}
+			System.out.println("Sie können nun loslaufen.");
+			CustomRecognizer.learn(new Mat[] {backImage, rightImage, leftImage, frontImage});
+			imageFrame.toFront();
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+		
+		while (true) {
+			
+			int[] rawDepth = kinect.getRawDepth(); // TODO Convert to 640x360 or Convert Image to 512x424
+			
+			BufferedImage colorImage = (BufferedImage) kinect.getColorImage().getImage();
+			frame = ImageUtils.imageToMat(colorImage); 
+			
+			// TODO: Get rid of Background
+			
+			Imgproc.resize(frame, frame, imageSize);
+			frame = CustomRecognizer.process(frame);
+			if (frame != null) {
+				BufferedImage img = ImageUtils.matToImage(frame);
+				updateImage(img);
+				
+				// TODO: get X-Koord
+				// TODO: Get Depth Data for Position of User -> Distance -> + X-Koord -> Angle (rawDepth)
+				
+				foundLabel.setText("Object found!");
+				foundLabel.setForeground(new Color(0, 255, 0));
+			} else {
+				foundLabel.setText("No Object found!");
+				foundLabel.setForeground(new Color(255, 0, 0));
+			}
+			updateColor(ImageUtils.resize(colorImage, 640, 360));
+			
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+
 	}
 
 	public static void updateImage(BufferedImage i) {
 		ImageIcon icon = new ImageIcon(i);
 		imageLabel.setIcon(icon);
+	}
+	public static void updateColor(BufferedImage i) {
+		ImageIcon icon = new ImageIcon(i);
+		colorLabel.setIcon(icon);
 	}
 	
 	@Override
@@ -190,6 +180,7 @@ public class Main extends PApplet {
 		kinect.enablePointCloud(true);
 		kinect.enableSkeleton(true);
 		kinect.enableSkeleton3dMap(true);
+		kinect.activateRawDepth(true);
 
 		kinect.setHighThresholdPC(2000);
 		kinect.setLowThresholdPC(0);
@@ -197,7 +188,7 @@ public class Main extends PApplet {
 		kinect.init();
 
 		sketchPath(System.getProperty("user.dir"));
-		PImage img = loadImage(System.getProperty("user.dir") + "\\res\\background.png"); //TODO: Generate Image based on opposite of Background
+		PImage img = loadImage(System.getProperty("user.dir") + "\\res\\pink.png");
 		img.loadPixels();
 		kinect.setCoordBkgImg(img.pixels);
 		
@@ -206,15 +197,15 @@ public class Main extends PApplet {
 
 		imageFrame.setLayout(new FlowLayout());
 		imageFrame.setTitle("Image");
-		imageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		imageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		imageFrame.setVisible(true);
 		imageFrame.add(imageLabel);
-		imageFrame.add(fpsLabel);
+		imageFrame.add(colorLabel);
 		imageFrame.add(foundLabel);
-		imageFrame.setBounds(20, 20, 720, 960);
+		imageFrame.setBounds(0, 10, 1100, 1000);
 		
 		ConnectionManager.connect(remoteAddress, port);
-		ObjectRecognizer.init(0.6f, 4); // TODO: Perfekte Werte finden
+		CustomRecognizer.init(0.7f, 15); // TODO: Perfekte Werte finden
 		
 		System.out.println("Set up.");
 	}
