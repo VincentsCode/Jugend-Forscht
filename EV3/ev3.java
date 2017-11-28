@@ -6,11 +6,6 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import lejos.hardware.motor.Motor;
-import lejos.hardware.motor.NXTRegulatedMotor;
-import lejos.remote.nxt.BTConnector;
-import lejos.remote.nxt.NXTConnection;
-
 public class ev3 {
 
 	int angle;
@@ -20,11 +15,10 @@ public class ev3 {
 	String BTMessage = "Nix";
 	String WlanMessage = "Nix";
 
-	boolean BTConnected = true; //false
+	boolean BTConnected = false;
 	boolean WlanConnected = false;
 
-//	long speed = Long.MAX_VALUE;
-	long speed = 100;
+	long speed = 400;
 
 	ServerSocket server;
 	Socket client;
@@ -33,6 +27,7 @@ public class ev3 {
 
 		try {
 
+			// Creates Motors and sets default speed;
 			NXTRegulatedMotor mA = Motor.A;
 			NXTRegulatedMotor mB = Motor.B;
 			NXTRegulatedMotor mC = Motor.C;
@@ -43,19 +38,22 @@ public class ev3 {
 			mC.setSpeed(speed);
 			mD.setSpeed(speed);
 
+			// Starts threads to communicate with laptop and smartphone
 			bluetoothThread bT = new bluetoothThread("BT");
 			wlanThread wT = new wlanThread("WLAN", 1337);
 			bT.start();
 			wT.start();
+
 			while (true) {
-				
+
+				// Waits until Wlan and Bluetooth is connected
 				if (WlanConnected && BTConnected) {
-					
-					//Get Messages
+
+					// Get Messages
 					WlanMessage = wT.Command;
 					BTMessage = bT.Command;
-					
-					//Check if BT tells the robot to stop or drive
+
+					// Check if BT tells the robot to stop or drive
 					if (BTMessage.toLowerCase().equals("go")) {
 						stop = false;
 					} else if (BTMessage.toLowerCase().equals("stop")) {
@@ -63,9 +61,8 @@ public class ev3 {
 					} else if (!BTMessage.equals("Nix")) {
 						System.out.println(BTMessage);
 					}
-						
-					
-					//Get Data out of the Wlan-Message
+
+					// Get Data out of the Wlan-Message
 					if (WlanMessage.contains("#")) {
 						int i = WlanMessage.indexOf('#');
 						WlanMessage = WlanMessage.replace("#", "");
@@ -76,29 +73,28 @@ public class ev3 {
 					} else {
 						System.out.println(WlanMessage);
 					}
-				
-					
+
+					// Checks if the person is not to close
 					if (distance > 10) {
 						
-						if (angle < 90) {
+						// Checks if the position of the motors is in possible range
+						if (angle < 90 && angle > -90) {
 							mB.rotateTo(-angle * 4, true);
 							mC.rotateTo(angle * 4, false);
 						}
-						
+
 						mA.backward();
 						mD.backward();
 					} else {
 						mA.stop();
 						mD.stop();
 					}
-					
 
 				} else {
 					System.out.println("BT-State: " + BTConnected + ", Wlan-State; " + WlanConnected);
 				}
-				
-			}
 
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -130,7 +126,7 @@ public class ev3 {
 			String message = "";
 
 			BTConnected = true;
-			
+
 			System.out.println("B verbunden");
 
 			while (true) {
@@ -175,7 +171,7 @@ public class ev3 {
 				String message = "";
 
 				WlanConnected = true;
-				
+
 				System.out.println("W verbunden");
 
 				while (true) {
