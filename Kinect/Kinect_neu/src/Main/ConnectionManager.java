@@ -29,7 +29,7 @@ public class ConnectionManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void send(int i) {
 		try {
 			dataOutputStream.writeUTF(String.valueOf(i));
@@ -37,7 +37,7 @@ public class ConnectionManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void send(double d1, double d2) {
 		try {
 			StringBuilder s = new StringBuilder();
@@ -49,7 +49,7 @@ public class ConnectionManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void send(double d1, double d2, char seperator) {
 		try {
 			StringBuilder s = new StringBuilder();
@@ -79,33 +79,33 @@ public class ConnectionManager {
 		}
 		return -1;
 	}
-	
+
 	public static boolean isConnected() {
 		return connected;
 	}
-	
+
 	public static DataOutputStream getDataOutputStream() {
 		return dataOutputStream;
 	}
-	
+
 	public static DataInputStream getDataInputStream() {
 		return dataInputStream;
 	}
-	
+
 	public static Socket getClient() {
 		return client;
 	}
-	
+
 	public static String getLocalSocketAddress() {
 		return client.getLocalSocketAddress().toString();
 	}
-	
+
 	public static String getRemoteSocketAddress() {
 		return client.getRemoteSocketAddress().toString();
 	}
-	
+
 	public int getPort() {
 		return client.getPort();
 	}
-	
+
 }
