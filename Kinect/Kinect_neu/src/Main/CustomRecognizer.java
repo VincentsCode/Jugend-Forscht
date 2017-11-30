@@ -46,11 +46,11 @@ public class CustomRecognizer {
 	private static MatOfKeyPoint[] processedObjectDescriptors = new MatOfKeyPoint[4];
 	private static Mat[] processedOutputImages = new Mat[4];
 	private static Mat[] processedObjects = new Mat[4];
-	
+
 	private static processingThread[] threads = new processingThread[4];
-	
+
 	private static CustomRecognizer customRecognizer = new CustomRecognizer();
-	
+
 	private static Map<Integer, Integer> plausibilities = new HashMap<>();
 	private static Map<Integer, Mat> resultImages = new HashMap<>();
 
@@ -84,22 +84,21 @@ public class CustomRecognizer {
 			processedOutputImages[i] = outputImage;
 			processedObjects[i] = objects[i];
 		}
-		
-		ImageUtils.showImages(new BufferedImage[] {
-				ImageUtils.matToImage(processedOutputImages[0]),
-				ImageUtils.matToImage(processedOutputImages[1]),
-				ImageUtils.matToImage(processedOutputImages[2]),
-				ImageUtils.matToImage(processedOutputImages[3])
-				});
+
+		ImageUtils.showImages(new BufferedImage[] { ImageUtils.matToImage(processedOutputImages[0]),
+				ImageUtils.matToImage(processedOutputImages[1]), ImageUtils.matToImage(processedOutputImages[2]),
+				ImageUtils.matToImage(processedOutputImages[3]) });
 	}
 
 	public static Mat process(Mat sceneImage) {
 		
+		// TODO: Get Point with most matches and return the Position of it instead of the image
+
 		for (int s = 0; s < 4; s++) {
 			threads[s] = customRecognizer.new processingThread(s, sceneImage, s);
 			threads[s].start();
 		}
-		
+
 		while (resultImages.size() != 4 || plausibilities.size() != 4) {
 			try {
 				Thread.sleep(0);
@@ -107,7 +106,7 @@ public class CustomRecognizer {
 				e.printStackTrace();
 			}
 		}
-		
+
 		int max = 0;
 		int maxKey = -1;
 		for (int i = 0; i < plausibilities.size(); i++) {
@@ -116,30 +115,30 @@ public class CustomRecognizer {
 				maxKey = i;
 			}
 		}
-		
+
 		if (maxKey != -1) {
 			System.out.println(plausibilities.get(maxKey));
 			return resultImages.get(maxKey);
 		}
-		
+
 		return null;
 	}
-	
+
 	class processingThread extends Thread {
 		public int id;
 		private Mat input;
 		private int side;
-		
+
 		public processingThread(int id, Mat input, int side) {
 			this.id = id;
 			this.input = input;
 			this.side = side;
-			
+
 		}
-		
+
 		@Override
 		public void run() {
-				
+
 			MatOfKeyPoint objectKeyPoints = processedObjectKeyPoints[side];
 			MatOfKeyPoint objectDescriptors = processedObjectDescriptors[side];
 			Mat objectImage = processedObjects[side];
@@ -172,10 +171,8 @@ public class CustomRecognizer {
 
 				List<KeyPoint> objKeypointlist = objectKeyPoints.toList();
 				List<KeyPoint> scnKeypointlist = sceneKeyPoints.toList();
-				
 
-				// TODO: Filter Point p = objKeypointlist.get(i).pt; to remove Points on Background
-				
+				// TODO: Get Rid of the Points on the pink background
 
 				LinkedList<Point> objectPoints = new LinkedList<>();
 				LinkedList<Point> scenePoints = new LinkedList<>();
@@ -213,17 +210,17 @@ public class CustomRecognizer {
 						new Scalar(0, 255, 0), 4);
 				Core.line(img, new Point(scene_corners.get(3, 0)), new Point(scene_corners.get(0, 0)),
 						new Scalar(0, 255, 0), 4);
-				
+
 				MatOfDMatch goodMatches = new MatOfDMatch();
 				goodMatches.fromList(goodMatchesList);
 
-				Features2d.drawMatches(objectImage, objectKeyPoints, input, sceneKeyPoints, goodMatches,
-						matchoutput, matchestColor, newKeypointColor, new MatOfByte(), 2);
-			} 
-			
+				Features2d.drawMatches(objectImage, objectKeyPoints, input, sceneKeyPoints, goodMatches, matchoutput,
+						matchestColor, newKeypointColor, new MatOfByte(), 2);
+			}
+
 			plausibilities.put(side, goodMatchesList.size());
 			resultImages.put(side, matchoutput);
 		}
 	}
-	
+
 }

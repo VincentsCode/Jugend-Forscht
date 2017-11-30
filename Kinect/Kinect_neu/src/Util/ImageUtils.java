@@ -10,7 +10,10 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,6 +56,15 @@ public class ImageUtils {
 		frame.setVisible(true);
 	}
 	
+	public static void saveImage(BufferedImage image, String file) {
+	    try {
+		    File outputfile = new File(file);
+			ImageIO.write(image, "png", outputfile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static BufferedImage resize(BufferedImage imageToScale, int width, int height) {
 		BufferedImage scaledImage = null;
 		if (imageToScale != null) {
@@ -80,41 +92,35 @@ public class ImageUtils {
 		return image;
 	}
 
-	public static Mat imageToMat(BufferedImage in)
-    {
-          Mat out;
-          byte[] data;
-          int r, g, b;
-          int height = in.getHeight();
-          int width = in.getWidth();
-          if(in.getType() == BufferedImage.TYPE_INT_RGB || in.getType() == BufferedImage.TYPE_INT_ARGB)
-          {
-              out = new Mat(height, width, CvType.CV_8UC3);
-              data = new byte[height * width * (int)out.elemSize()];
-              int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
-              for(int i = 0; i < dataBuff.length; i++)
-              {
-                  data[i*3 + 2] = (byte) ((dataBuff[i] >> 16) & 0xFF);
-                  data[i*3 + 1] = (byte) ((dataBuff[i] >> 8) & 0xFF);
-                  data[i*3] = (byte) ((dataBuff[i] >> 0) & 0xFF);
-              }
-          }
-          else
-          {
-              out = new Mat(height, width, CvType.CV_8UC1);
-              data = new byte[height * width * (int)out.elemSize()];
-              int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
-              for(int i = 0; i < dataBuff.length; i++)
-              {
-                r = (byte) ((dataBuff[i] >> 16) & 0xFF);
-                g = (byte) ((dataBuff[i] >> 8) & 0xFF);
-                b = (byte) ((dataBuff[i] >> 0) & 0xFF);
-                data[i] = (byte)((0.21 * r) + (0.71 * g) + (0.07 * b)); //luminosity
-              }
-           }
-           out.put(0, 0, data);
-           return out;
-     }
+	public static Mat imageToMat(BufferedImage in) {
+		Mat out;
+		byte[] data;
+		int r, g, b;
+		int height = in.getHeight();
+		int width = in.getWidth();
+		if (in.getType() == BufferedImage.TYPE_INT_RGB || in.getType() == BufferedImage.TYPE_INT_ARGB) {
+			out = new Mat(height, width, CvType.CV_8UC3);
+			data = new byte[height * width * (int) out.elemSize()];
+			int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
+			for (int i = 0; i < dataBuff.length; i++) {
+				data[i * 3 + 2] = (byte) ((dataBuff[i] >> 16) & 0xFF);
+				data[i * 3 + 1] = (byte) ((dataBuff[i] >> 8) & 0xFF);
+				data[i * 3] = (byte) ((dataBuff[i] >> 0) & 0xFF);
+			}
+		} else {
+			out = new Mat(height, width, CvType.CV_8UC1);
+			data = new byte[height * width * (int) out.elemSize()];
+			int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
+			for (int i = 0; i < dataBuff.length; i++) {
+				r = (byte) ((dataBuff[i] >> 16) & 0xFF);
+				g = (byte) ((dataBuff[i] >> 8) & 0xFF);
+				b = (byte) ((dataBuff[i] >> 0) & 0xFF);
+				data[i] = (byte) ((0.21 * r) + (0.71 * g) + (0.07 * b)); // luminosity
+			}
+		}
+		out.put(0, 0, data);
+		return out;
+	}
 
 	public static BufferedImage createMask(BufferedImage image, BufferedImage mask) {
 		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
