@@ -27,7 +27,7 @@ public class ev3 {
 
 		try {
 
-			// Creates Motors and sets default speed;
+			// Creates Motors and sets default speed
 			NXTRegulatedMotor mA = Motor.A;
 			NXTRegulatedMotor mB = Motor.B;
 			NXTRegulatedMotor mC = Motor.C;
@@ -49,11 +49,11 @@ public class ev3 {
 				// Waits until Wlan and Bluetooth is connected
 				if (WlanConnected && BTConnected) {
 
-					// Get Messages
+					// Gets Messages
 					WlanMessage = wT.Command;
 					BTMessage = bT.Command;
 
-					// Check if BT tells the robot to stop or drive
+					// Checks if BT tells the robot to stop or drive
 					if (BTMessage.toLowerCase().equals("go")) {
 						stop = false;
 					} else if (BTMessage.toLowerCase().equals("stop")) {
@@ -62,7 +62,7 @@ public class ev3 {
 						System.out.println(BTMessage);
 					}
 
-					// Get Data out of the Wlan-Message
+					// Gets Data out of the Wlan-Message
 					if (WlanMessage.contains("#")) {
 						int i = WlanMessage.indexOf('#');
 						WlanMessage = WlanMessage.replace("#", "");
