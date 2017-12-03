@@ -1,19 +1,16 @@
 package Main;
 
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfDMatch;
 import org.opencv.core.MatOfKeyPoint;
-import org.opencv.core.MatOfPoint2f;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.features2d.DMatch;
@@ -27,13 +24,15 @@ import org.opencv.highgui.Highgui;
 import Util.ImageUtils;
 
 public class CustomRecognizer {
+	
+	private static int imageCount = 4;
+	
+	private static FeatureDetector featureDetector = FeatureDetector.create(FeatureDetector.SURF);;
+	private static DescriptorExtractor descriptorExtractor = DescriptorExtractor.create(DescriptorExtractor.SURF);;
+	private static DescriptorMatcher descriptorMatcher = DescriptorMatcher.create(DescriptorMatcher.FLANNBASED);
 
-	private static FeatureDetector featureDetector;
-	private static DescriptorExtractor descriptorExtractor;
-	private static DescriptorMatcher descriptorMatcher;
-
-	private static Scalar newKeypointColor;
-	private static Scalar matchestColor;
+	private static Scalar newKeypointColor = new Scalar(255, 0, 0);
+	private static Scalar matchestColor = new Scalar(0, 255, 0);
 
 	private static float Ratio;
 	private static int minMatches;
@@ -42,33 +41,26 @@ public class CustomRecognizer {
 	// 2 = right
 	// 3 = left
 	// 4 = front
-	private static MatOfKeyPoint[] processedObjectKeyPoints = new MatOfKeyPoint[4];
-	private static MatOfKeyPoint[] processedObjectDescriptors = new MatOfKeyPoint[4];
-	private static Mat[] processedOutputImages = new Mat[4];
-	private static Mat[] processedObjects = new Mat[4];
+	private static MatOfKeyPoint[] processedObjectKeyPoints = new MatOfKeyPoint[imageCount];
+	private static MatOfKeyPoint[] processedObjectDescriptors = new MatOfKeyPoint[imageCount];
+	private static Mat[] processedOutputImages = new Mat[imageCount];
+	private static Mat[] processedObjects = new Mat[imageCount];
 
-	private static processingThread[] threads = new processingThread[4];
+	private static processingThread[] threads = new processingThread[imageCount];
 
 	private static CustomRecognizer customRecognizer = new CustomRecognizer();
 
 	private static Map<Integer, Integer> plausibilities = new HashMap<>();
 	private static Map<Integer, Mat> resultImages = new HashMap<>();
+	private static Map<Integer, Integer> resultValues = new HashMap<>();
 
 	public static void init(float ratio, int matches) {
 		CustomRecognizer.Ratio = ratio;
 		CustomRecognizer.minMatches = matches;
-
-		featureDetector = FeatureDetector.create(FeatureDetector.SURF);
-		descriptorExtractor = DescriptorExtractor.create(DescriptorExtractor.SURF);
-		descriptorMatcher = DescriptorMatcher.create(DescriptorMatcher.FLANNBASED);
-
-		newKeypointColor = new Scalar(255, 0, 0);
-		matchestColor = new Scalar(0, 255, 0);
-
 	}
 
 	public static void learn(Mat[] objects) {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < imageCount; i++) {
 			Mat objectImage = objects[i];
 
 			MatOfKeyPoint objectKeyPoints = new MatOfKeyPoint();
@@ -84,22 +76,17 @@ public class CustomRecognizer {
 			processedOutputImages[i] = outputImage;
 			processedObjects[i] = objects[i];
 		}
-
-		ImageUtils.showImages(new BufferedImage[] { ImageUtils.matToImage(processedOutputImages[0]),
-				ImageUtils.matToImage(processedOutputImages[1]), ImageUtils.matToImage(processedOutputImages[2]),
-				ImageUtils.matToImage(processedOutputImages[3]) });
+		ImageUtils.showImages(ImageUtils.matsToImages(processedOutputImages));
 	}
 
-	public static Mat process(Mat sceneImage) {
-		
-		// TODO: Get Point with most matches and return the Position of it instead of the image
+	public static Result process(Mat sceneImage) {
 
-		for (int s = 0; s < 4; s++) {
+		for (int s = 0; s < imageCount; s++) {
 			threads[s] = customRecognizer.new processingThread(s, sceneImage, s);
 			threads[s].start();
 		}
 
-		while (resultImages.size() != 4 || plausibilities.size() != 4) {
+		while (resultImages.size() != imageCount || plausibilities.size() != imageCount || resultValues.size() != imageCount) {
 			try {
 				Thread.sleep(0);
 			} catch (InterruptedException e) {
@@ -117,8 +104,7 @@ public class CustomRecognizer {
 		}
 
 		if (maxKey != -1) {
-			System.out.println(plausibilities.get(maxKey));
-			return resultImages.get(maxKey);
+			return new Result(resultImages.get(maxKey), resultValues.get(maxKey));
 		}
 
 		return null;
@@ -138,23 +124,25 @@ public class CustomRecognizer {
 
 		@Override
 		public void run() {
-
+			// gets preprocessed object-keypoints
+			Mat objectImage = processedObjects[side];
 			MatOfKeyPoint objectKeyPoints = processedObjectKeyPoints[side];
 			MatOfKeyPoint objectDescriptors = processedObjectDescriptors[side];
-			Mat objectImage = processedObjects[side];
-
+			
+			// gets scene-keypoints
 			MatOfKeyPoint sceneKeyPoints = new MatOfKeyPoint();
 			MatOfKeyPoint sceneDescriptors = new MatOfKeyPoint();
 			featureDetector.detect(input, sceneKeyPoints);
 			descriptorExtractor.compute(input, sceneKeyPoints, sceneDescriptors);
-
+			KeyPoint[] sceneKeyPointsArray = sceneKeyPoints.toArray();
+			
+			// gets matches of scene and object
 			Mat matchoutput = new Mat(input.rows() * 2, input.cols() * 2, Highgui.CV_LOAD_IMAGE_COLOR);
 			List<MatOfDMatch> matches = new LinkedList<MatOfDMatch>();
-
 			descriptorMatcher.knnMatch(objectDescriptors, sceneDescriptors, matches, 2);
 
+			// filters matches
 			LinkedList<DMatch> goodMatchesList = new LinkedList<DMatch>();
-
 			for (int i = 0; i < matches.size(); i++) {
 				MatOfDMatch matofDMatch = matches.get(i);
 				DMatch[] dmatcharray = matofDMatch.toArray();
@@ -163,63 +151,54 @@ public class CustomRecognizer {
 
 				if (m1.distance <= m2.distance * Ratio) {
 					goodMatchesList.addLast(m1);
-
 				}
 			}
-
+			
+			double finalX = 0;
 			if (goodMatchesList.size() >= minMatches) {
-
-				List<KeyPoint> objKeypointlist = objectKeyPoints.toList();
-				List<KeyPoint> scnKeypointlist = sceneKeyPoints.toList();
-
-				// TODO: Get Rid of the Points on the pink background
-
-				LinkedList<Point> objectPoints = new LinkedList<>();
-				LinkedList<Point> scenePoints = new LinkedList<>();
-
-				for (int i = 0; i < goodMatchesList.size(); i++) {
-					objectPoints.addLast(objKeypointlist.get(goodMatchesList.get(i).queryIdx).pt);
-					scenePoints.addLast(scnKeypointlist.get(goodMatchesList.get(i).trainIdx).pt);
-				}
-
-				MatOfPoint2f objMatOfPoint2f = new MatOfPoint2f();
-				objMatOfPoint2f.fromList(objectPoints);
-				MatOfPoint2f scnMatOfPoint2f = new MatOfPoint2f();
-				scnMatOfPoint2f.fromList(scenePoints);
-
-				Mat homography = Calib3d.findHomography(objMatOfPoint2f, scnMatOfPoint2f, Calib3d.RANSAC, 3);
-
-				Mat obj_corners = new Mat(4, 1, CvType.CV_32FC2);
-				Mat scene_corners = new Mat(4, 1, CvType.CV_32FC2);
-
-				obj_corners.put(0, 0, new double[] { 0, 0 });
-				obj_corners.put(1, 0, new double[] { objectImage.cols(), 0 });
-				obj_corners.put(2, 0, new double[] { objectImage.cols(), objectImage.rows() });
-				obj_corners.put(3, 0, new double[] { 0, objectImage.rows() });
-
-				Core.perspectiveTransform(obj_corners, scene_corners, homography);
-
-				Mat img = new Mat();
-				input.copyTo(img);
-
-				Core.line(img, new Point(scene_corners.get(0, 0)), new Point(scene_corners.get(1, 0)),
-						new Scalar(0, 255, 0), 4);
-				Core.line(img, new Point(scene_corners.get(1, 0)), new Point(scene_corners.get(2, 0)),
-						new Scalar(0, 255, 0), 4);
-				Core.line(img, new Point(scene_corners.get(2, 0)), new Point(scene_corners.get(3, 0)),
-						new Scalar(0, 255, 0), 4);
-				Core.line(img, new Point(scene_corners.get(3, 0)), new Point(scene_corners.get(0, 0)),
-						new Scalar(0, 255, 0), 4);
-
+				// draws matches
 				MatOfDMatch goodMatches = new MatOfDMatch();
 				goodMatches.fromList(goodMatchesList);
-
-				Features2d.drawMatches(objectImage, objectKeyPoints, input, sceneKeyPoints, goodMatches, matchoutput,
-						matchestColor, newKeypointColor, new MatOfByte(), 2);
+				Features2d.drawMatches(objectImage, objectKeyPoints, input, sceneKeyPoints, goodMatches, matchoutput, matchestColor, newKeypointColor, new MatOfByte(), 2);
+				
+				// draws and gets x-position of user
+				List<Double> xValues = new ArrayList<>(); 
+				for (int i = 0; i < goodMatchesList.size(); i++) {
+					xValues.add(sceneKeyPointsArray[goodMatchesList.get(i).trainIdx].pt.x);
+				}
+				
+				xValues.sort(Double::compareTo);
+				
+				double q1 = xValues.get(xValues.size() / 4);
+				double q3 = xValues.get(xValues.size() / 2 + xValues.size() / 4);
+				double iqd = (q3 - q1) * 2;
+				
+				double rangeUp = q3 + iqd;
+				double rangeDown = q1 - iqd;
+				
+				for (int i = 0; i < xValues.size(); i++) {
+					if (xValues.get(i) > rangeUp || xValues.get(i) < rangeDown) {
+						xValues.remove(i);
+					}
+				}
+				
+				xValues = xValues.subList(1, xValues.size() -1);
+				
+				finalX = 0;
+				for (double d : xValues) {
+					finalX += d;
+				}
+				finalX = finalX / xValues.size();
+				
+				Core.line(matchoutput, new Point(finalX + 640, 0), new Point(finalX + 640, 400), newKeypointColor, 10);
+				Core.putText(matchoutput, String.valueOf((int)(finalX - 320)), new Point(640, 20), Core.FONT_HERSHEY_SIMPLEX, 1.0, new Scalar(0, 0, 255));
+				
 			}
 
+			// returns plausability and results
 			plausibilities.put(side, goodMatchesList.size());
 			resultImages.put(side, matchoutput);
+			resultValues.put(side, (int) finalX - 320);
 		}
 	}
 

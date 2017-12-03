@@ -90,6 +90,14 @@ public class ImageUtils {
 		mat.get(0, 0, data);
 
 		return image;
+	}	
+	
+	public static BufferedImage[] matsToImages(Mat[] mats) {
+		BufferedImage[] result = new BufferedImage[mats.length];
+		for (int i = 0; i < mats.length; i++) {
+			result[i] = matToImage(mats[i]);
+		}
+		return result;
 	}
 
 	public static Mat imageToMat(BufferedImage in) {
