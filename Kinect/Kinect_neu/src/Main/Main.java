@@ -110,24 +110,22 @@ public class Main extends PApplet {
 			BufferedImage colorImage = (BufferedImage) kinect.getColorImage().getImage();
 			frame = ImageUtils.imageToMat(colorImage);
 
-			// TODO: Get rid of Background (a.e. Convert Image to 512x424 -> Map to Depth)
-
 			Imgproc.resize(frame, frame, new Size(imageWidth, imageHeight));
-			frame = CustomRecognizer.process(frame);
-			if (frame != null) {
+			Result res = CustomRecognizer.process(frame);
+			if (res != null) {
+				frame =  res.image;
+				int x = res.x;
+				ConnectionManager.send(x);
+				System.out.println(x);
 				BufferedImage img = ImageUtils.matToImage(frame);
-				updateImage(img);
-
-				// TODO: get X-Koord
-				// TODO: Get Depth Data for Position of User -> Distance -> + X-Koord -> Angle
-
+				updateResult(img);
 				foundLabel.setText("Object found!");
 				foundLabel.setForeground(new Color(0, 255, 0));
 			} else {
 				foundLabel.setText("No Object found!");
 				foundLabel.setForeground(new Color(255, 0, 0));
 			}
-			updateColor(ImageUtils.resize(colorImage, 640, 360));
+			updateStream(ImageUtils.resize(colorImage, 640, 360));
 
 			try {
 				Thread.sleep(300);
@@ -139,12 +137,12 @@ public class Main extends PApplet {
 
 	}
 
-	public static void updateImage(BufferedImage i) {
+	public static void updateResult(BufferedImage i) {
 		ImageIcon icon = new ImageIcon(i);
 		imageLabel.setIcon(icon);
 	}
 
-	public static void updateColor(BufferedImage i) {
+	public static void updateStream(BufferedImage i) {
 		ImageIcon icon = new ImageIcon(i);
 		colorLabel.setIcon(icon);
 	}
@@ -187,18 +185,8 @@ public class Main extends PApplet {
 		imageFrame.setBounds(0, 10, 1100, 1000);
 
 		ConnectionManager.connect(remoteAddress, port);
-		CustomRecognizer.init(0.7f, 10);
+		CustomRecognizer.init(0.7f, 15);
 
 		System.out.println("Setup finished.");
-	}
-
-	public static class ListSkeleton {
-		Skeleton skeleton;
-		int id;
-
-		ListSkeleton(Skeleton s, int i) {
-			this.id = i;
-			this.skeleton = s;
-		}
 	}
 }
