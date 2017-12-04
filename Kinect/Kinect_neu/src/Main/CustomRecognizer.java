@@ -13,6 +13,7 @@ import org.opencv.core.MatOfDMatch;
 import org.opencv.core.MatOfKeyPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.features2d.DMatch;
 import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.DescriptorMatcher;
@@ -20,12 +21,11 @@ import org.opencv.features2d.FeatureDetector;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.KeyPoint;
 import org.opencv.highgui.Highgui;
+import org.opencv.imgproc.Imgproc;
 
 import Util.ImageUtils;
 
 public class CustomRecognizer {
-	
-	private static int imageCount = 4;
 	
 	private static FeatureDetector featureDetector = FeatureDetector.create(FeatureDetector.SURF);;
 	private static DescriptorExtractor descriptorExtractor = DescriptorExtractor.create(DescriptorExtractor.SURF);;
@@ -36,17 +36,14 @@ public class CustomRecognizer {
 
 	private static float Ratio;
 	private static int minMatches;
+	private static int imageCount;
 
-	// 1 = back
-	// 2 = right
-	// 3 = left
-	// 4 = front
-	private static MatOfKeyPoint[] processedObjectKeyPoints = new MatOfKeyPoint[imageCount];
-	private static MatOfKeyPoint[] processedObjectDescriptors = new MatOfKeyPoint[imageCount];
-	private static Mat[] processedOutputImages = new Mat[imageCount];
-	private static Mat[] processedObjects = new Mat[imageCount];
+	private static MatOfKeyPoint[] processedObjectKeyPoints;
+	private static MatOfKeyPoint[] processedObjectDescriptors;
+	private static Mat[] processedOutputImages;
+	private static Mat[] processedObjects;
 
-	private static processingThread[] threads = new processingThread[imageCount];
+	private static processingThread[] threads;
 
 	private static CustomRecognizer customRecognizer = new CustomRecognizer();
 
@@ -54,9 +51,16 @@ public class CustomRecognizer {
 	private static Map<Integer, Mat> resultImages = new HashMap<>();
 	private static Map<Integer, Integer> resultValues = new HashMap<>();
 
-	public static void init(float ratio, int matches) {
+	public static void init(float ratio, int matches, int count) {
 		CustomRecognizer.Ratio = ratio;
 		CustomRecognizer.minMatches = matches;
+		CustomRecognizer.imageCount = count;
+		
+		processedObjectKeyPoints = new MatOfKeyPoint[imageCount];
+		processedObjectDescriptors = new MatOfKeyPoint[imageCount];
+		processedOutputImages = new Mat[imageCount];
+		processedObjects = new Mat[imageCount];
+		threads = new processingThread[imageCount];
 	}
 
 	public static void learn(Mat[] objects) {
@@ -76,6 +80,13 @@ public class CustomRecognizer {
 			processedOutputImages[i] = outputImage;
 			processedObjects[i] = objects[i];
 		}
+		
+		if (processedOutputImages.length > 4) {
+			for (int i = 0; i < processedOutputImages.length; i++) {
+				Imgproc.resize(processedOutputImages[i], processedOutputImages[i], new Size(640 / (processedOutputImages.length / 4), 360 / (processedOutputImages.length / 4)));
+			}
+		}
+		
 		ImageUtils.showImages(ImageUtils.matsToImages(processedOutputImages));
 	}
 
@@ -104,6 +115,7 @@ public class CustomRecognizer {
 		}
 
 		if (maxKey != -1) {
+			System.out.println("Plausabilty: " + plausibilities.get(maxKey));
 			return new Result(resultImages.get(maxKey), resultValues.get(maxKey));
 		}
 

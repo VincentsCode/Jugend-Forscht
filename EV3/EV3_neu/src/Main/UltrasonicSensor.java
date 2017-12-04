@@ -15,7 +15,7 @@ public class UltrasonicSensor extends AbstractFilter {
 	
 	public int getDistance() {
 		super.fetchSample(sample, 0);
-		return Math.round(sample[0]);
+		return Math.round(sample[0] * 100);
 	}
 
 }

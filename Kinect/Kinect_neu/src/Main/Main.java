@@ -27,7 +27,7 @@ public class Main extends PApplet {
 	}
 	
 	// Settings
-	private static String remoteAddress = "192.168.2.100";
+	private static String remoteAddress = "192.168.43.8";
 	private static int port = 1337;
 	private static int imageWidth = 640;
 	private static int imageHeight = 360;
@@ -185,7 +185,7 @@ public class Main extends PApplet {
 		imageFrame.setBounds(0, 10, 1100, 1000);
 
 		ConnectionManager.connect(remoteAddress, port);
-		CustomRecognizer.init(0.7f, 15);
+		CustomRecognizer.init(0.7f, 10, 4);
 
 		System.out.println("Setup finished.");
 	}
