@@ -1,44 +1,154 @@
 package Main;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.List;
-
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+
 import KinectPV2.KinectPV2;
+import KinectPV2.Skeleton;
 import Util.ImageUtils;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Tester extends PApplet {
 
+	static {
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+	}
+	
+	// Settings
+	private static String remoteAddress = "192.168.2.100";
+	private static int port = 1337;
+	private static int imageWidth = 640;
+	private static int imageHeight = 360;
+	private static int imageCount = 10;
+	
+	// Static variables
 	private static KinectPV2 kinect;
-
-	private static PImage depthToColorImg;
-
 	private static JFrame imageFrame = new JFrame();
 	private static JLabel imageLabel = new JLabel();
+	private static JLabel colorLabel = new JLabel();
+	private static JLabel foundLabel = new JLabel();
+	private static Mat frame = new Mat();
+	
+	private static Mat getImage() throws InterruptedException {
 
-	private static Tester tester = new Tester();
-	static PrintWriter writer;
+		while (true) {
+
+			Skeleton[] skeletons = kinect.getSkeleton3d();
+			ArrayList<ListSkeleton> trackedSkeletons = new ArrayList<>();
+
+			for (int i = 0; i < skeletons.length; i++) {
+				if (skeletons[i].isTracked()) {
+					if (skeletons[i].getJoints()[0].getX() < 10 && skeletons[i].getJoints()[0].getX() > -10) {
+						trackedSkeletons.add(new ListSkeleton(skeletons[i], i));
+					}
+				}
+			}
+
+			if (trackedSkeletons.size() == 0) {
+				System.err.println("Bitte platzieren sie sich vor dem Roboter!");
+				Thread.sleep(1000);
+			} else if (trackedSkeletons.size() == 1) {
+				return ImageUtils.imageToMat(ImageUtils.resize((BufferedImage) kinect.getCoordinateRGBDepthImage().getImage(), imageWidth, imageHeight));
+			} else {
+				System.err.println("Es stehen zu viele Personen vor dem Roboter!");
+				Thread.sleep(1000);
+			}
+		}
+
+	}
 
 	public static void main(String[] args) {
-		
-		// Setup
-		kinect = new KinectPV2(tester);
+
+		Tester main = new Tester();
+		main.setup();
+
+		try {
+			Thread.sleep(8000);
+			
+			System.out.println("Bitte langsam im Kreis drehen");
+			
+			Thread.sleep(5000);
+			
+			System.out.println("Scan gestartet");
+			
+			ArrayList<Mat> images = new ArrayList<>();
+			
+			while (images.size() < 20) {
+				images.add(getImage());
+				Thread.sleep(600);
+			}
+			
+			CustomRecognizer.learn(images.toArray(new Mat[20]));
+			imageFrame.toFront();
+			
+			System.out.println("Nun loslaufen");
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		while (true) {
+
+			BufferedImage colorImage = (BufferedImage) kinect.getColorImage().getImage();
+			frame = ImageUtils.imageToMat(colorImage);
+
+			Imgproc.resize(frame, frame, new Size(imageWidth, imageHeight));
+			Result res = CustomRecognizer.process(frame);
+			if (res != null) {
+				frame =  res.image;
+				int x = res.x;
+				ConnectionManager.send(x);
+				System.out.println(x);
+				BufferedImage img = ImageUtils.matToImage(frame);
+				updateResult(img);
+				foundLabel.setText("Object found!");
+				foundLabel.setForeground(new Color(0, 255, 0));
+			} else {
+				foundLabel.setText("No Object found!");
+				foundLabel.setForeground(new Color(255, 0, 0));
+			}
+			updateStream(ImageUtils.resize(colorImage, 640, 360));
+
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public static void updateResult(BufferedImage i) {
+		ImageIcon icon = new ImageIcon(i);
+		imageLabel.setIcon(icon);
+	}
+
+	public static void updateStream(BufferedImage i) {
+		ImageIcon icon = new ImageIcon(i);
+		colorLabel.setIcon(icon);
+	}
+
+	@Override
+	public void setup() {
+		kinect = new KinectPV2(this);
+
 		kinect.enableBodyTrackImg(true);
 		kinect.enableColorChannel(true);
 		kinect.enableColorImg(true);
 		kinect.enableCoordinateMapperRGBDepth(true);
 		kinect.enableDepthImg(true);
-		kinect.enableSkeletonDepthMap(true);
 		kinect.enableDepthMaskImg(true);
 		kinect.enableInfraredImg(true);
 		kinect.enablePointCloud(true);
@@ -47,152 +157,29 @@ public class Tester extends PApplet {
 		kinect.activateRawDepth(true);
 		kinect.activateRawColor(true);
 		kinect.enableLongExposureInfraredImg(true);
-		kinect.activateRawInfrared(true);
-		kinect.activateRawLongExposure(true);
+
+		kinect.setHighThresholdPC(1000);
+		kinect.setLowThresholdPC(0);
+
 		kinect.init();
+		
+		sketchPath(System.getProperty("user.dir"));
+		PImage img = loadImage(System.getProperty("user.dir") + "\\res\\pink.png");
+		img.loadPixels();
+		kinect.setCoordBkgImg(img.pixels);
 
 		imageFrame.setLayout(new FlowLayout());
 		imageFrame.setTitle("Image");
 		imageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		imageFrame.setVisible(true);
 		imageFrame.add(imageLabel);
+		imageFrame.add(colorLabel);
+		imageFrame.add(foundLabel);
 		imageFrame.setBounds(0, 10, 1100, 1000);
-		
-		// Code
-		System.out.println(getDepthForColorPixel(736, 657));
-		mapColorToDepth();
-		System.exit(0);
-		
-	}
-	
-	public static int getDepthForColorPixel(int x, int y) { // Es wird nur jeder 3. oder 4. X-ColorPixel verwendet
-		float[] mapDCT = kinect.getMapDepthToColor(); // 0 -> returns X-Coord; 1 -> returns Y-Coord of Color Pixel in 1920x1080-Image for given DepthPixel
-		int[] rawDepth = kinect.getRawDepth();
-		int depthIndex = -1;
-		
-		while (true) {
-			mapDCT = kinect.getMapDepthToColor();
-			int fails = 0;
-			for (float f : mapDCT) {
-				if (f == 0) {
-					fails++;
-				}
-			}
-			if (fails == 0) {
-				break;
-			}
-		}
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-		
-		try {
-			writer = new PrintWriter("C://Users//vince//Desktop//text.txt");
-			
-			for (int i = 0; i < kinect.getRawLongExposure().length; i++) {
-				System.out.println(kinect.getRawLongExposure()[i]);
-			}
-			
-		
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		Point[] pointArray = new Point[217088];
-		for (int i = 0; i < 217088; i++) {
-			pointArray[i] = new Point( (int) mapDCT[i*2+0], (int) mapDCT[i*2+1]);
-		}
-		
-		List<Point> pointList = Arrays.asList(pointArray);
-		
-		for (int i = -2; i <=2; i++) {
-			Point p = new Point((x + i), y);
-			if (pointList.contains(p)) {
-				depthIndex = pointList.indexOf(p);
-			}
-		}
-		
-		if (depthIndex < 0) {
-			return 0;
-		}
-		
-		if(rawDepth[depthIndex] > 0) {
-			return rawDepth[depthIndex];
-		} else {
-			System.out.println("No valid Depth @" + depthIndex);
-			return 0;
-		}
-	}
 
-	public static BufferedImage mapColorToDepth() {
-		try {
-			float[] mapDCT = kinect.getMapDepthToColor(); // 0 -> returns X-Coord; 1 -> returns Y-Coord of Color Pixel in 1920x1080-Image for given DepthPixel (poition in Array -> DepthPixel)
-			int[] colorRaw = kinect.getRawColor(); // 1920 * 1080
-
-			
-			depthToColorImg = tester.createImage(512, 424, PImage.RGB); // Creates dtc-Image
-			
-			// Waits for the Sensor
-			while (true) {
-				mapDCT = kinect.getMapDepthToColor();
-				int fails = 0;
-				for (float f : mapDCT) {
-					if (f == 0) {
-						fails++;
-					}
-				}
-				if (fails == 0) {
-					break;
-				}
-			}
-
-			
-			int count = 0; // from 0 to 217088 ( 512 * 424 )
-			for (int i = 0; i < 512; i++) { // Iterates through Depth-X
-				for (int j = 0; j < 424; j++) { // Iterates through Depth-Y
-
-					float valX = mapDCT[count * 2 + 0]; // Each first value = X
-					float valY = mapDCT[count * 2 + 1]; // Each second value = Y
-					
-					int valXDepth = (int) ((valX / 1920.0) * 512.0); // Gets valX for 512*424 Images ( like DepthImages )
-					int valYDepth = (int) ((valY / 1080.0) * 424.0); // Gets valY for 512*424 Images ( like DepthImages )
-
-					int valXColor = (int) (valX); // Gets valX for 1920*1080 Images ( like ColorImages )
-					int valYColor = (int) (valY); // Gets valX for 1920*1080 Images ( like ColorImages )
-					
-					if (valXDepth >= 0 && valXDepth < 512 && valYDepth >= 0 && valYDepth < 424 && valXColor >= 0 && valXColor < 1920 && valYColor >= 0 && valYColor < 1080) { 	// Filters "valX = -Infinity"-Errors
-						
-						int colorPixel = colorRaw[valYColor * 1920 + valXColor];  	// gets colorValues for row (valYColor * 1920) and column (valXColor) in color Image
-						depthToColorImg.pixels[valYDepth * 512 + valXDepth] = colorPixel;	// sets colorValue for row (valYDepth * 512) and column (valYDepth) in depth Image
-						
-					}
-					count++;
-
-				}
-			}
-			
-			depthToColorImg.updatePixels();
-			
-			BufferedImage dtc = ImageUtils.resize((BufferedImage) depthToColorImg.getImage(), 1920, 1080);
-			BufferedImage color = (BufferedImage) kinect.getColorImage().getImage();
-			
-			ImageUtils.saveImage(dtc, "C://Users//vince//Desktop//dtc.png");
-			ImageUtils.saveImage(color, "C://Users//vince//Desktop//color.png");
-
-			Thread.sleep(2000);
-			return dtc;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static void updateImage(BufferedImage i) {
-		ImageIcon icon = new ImageIcon(i);
-		imageLabel.setIcon(icon);
+		ConnectionManager.connect(remoteAddress, port);
+		CustomRecognizer.init(0.7f, 10, imageCount);
+		
+		System.out.println("Setup finished.");
 	}
 }
