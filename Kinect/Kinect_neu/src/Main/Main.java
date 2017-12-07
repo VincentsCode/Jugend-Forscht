@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,10 +26,11 @@ public class Main extends PApplet {
 	}
 	
 	// Settings
-	private static String remoteAddress = "192.168.43.8";
+	private static String remoteAddress = "192.168.2.100";
 	private static int port = 1337;
 	private static int imageWidth = 640;
 	private static int imageHeight = 360;
+	private static int imageCount = 10;
 	
 	// Static variables
 	private static KinectPV2 kinect;
@@ -39,12 +39,7 @@ public class Main extends PApplet {
 	private static JLabel colorLabel = new JLabel();
 	private static JLabel foundLabel = new JLabel();
 	private static Mat frame = new Mat();
-	private static Mat frontImage;
-	private static Mat rightImage;
-	private static Mat leftImage;
-	private static Mat backImage;
 	
-
 	private static Mat getImage() throws InterruptedException {
 
 		while (true) {
@@ -64,8 +59,7 @@ public class Main extends PApplet {
 				System.err.println("Bitte platzieren sie sich vor dem Roboter!");
 				Thread.sleep(1000);
 			} else if (trackedSkeletons.size() == 1) {
-				return ImageUtils.imageToMat(ImageUtils
-						.resize((BufferedImage) kinect.getCoordinateRGBDepthImage().getImage(), imageWidth, imageHeight));
+				return ImageUtils.imageToMat(ImageUtils.resize((BufferedImage) kinect.getCoordinateRGBDepthImage().getImage(), imageWidth, imageHeight));
 			} else {
 				System.err.println("Es stehen zu viele Personen vor dem Roboter!");
 				Thread.sleep(1000);
@@ -80,26 +74,25 @@ public class Main extends PApplet {
 		main.setup();
 
 		try {
-			// TODO Replace "System.out.println()" by sending a message to the App ( -> TTS )
-			System.out.println("Bitte stellen sie sich gerade vor den Roboter.");
+			Thread.sleep(8000);
+			
+			System.out.println("Bitte langsam im Kreis drehen");
+			
 			Thread.sleep(5000);
-			frontImage = getImage();
-
-			System.out.println("Bitte mit der Rechten Seite zum Roboter vor dem Roboter platzieren.");
-			Thread.sleep(3000);
-			rightImage = getImage();
-
-			System.out.println("Bitte mit der Linken Seite zum Roboter vor dem Roboter platzieren.");
-			Thread.sleep(3000);
-			leftImage = getImage();
-
-			System.out.println("Bitte stellen sie sich mit dem Rücken zum Roboter.");
-			Thread.sleep(3000);
-			backImage = getImage();
-
-			System.out.println("Sie können nun loslaufen.");
-			CustomRecognizer.learn(new Mat[] { backImage, rightImage, leftImage, frontImage });
+			
+			System.out.println("Scan gestartet");
+			
+			ArrayList<Mat> images = new ArrayList<>();
+			
+			while (images.size() < 20) {
+				images.add(getImage());
+				Thread.sleep(600);
+			}
+			
+			CustomRecognizer.learn(images.toArray(new Mat[20]));
 			imageFrame.toFront();
+			
+			System.out.println("Nun loslaufen");
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -169,7 +162,7 @@ public class Main extends PApplet {
 		kinect.setLowThresholdPC(0);
 
 		kinect.init();
-
+		
 		sketchPath(System.getProperty("user.dir"));
 		PImage img = loadImage(System.getProperty("user.dir") + "\\res\\pink.png");
 		img.loadPixels();
@@ -185,8 +178,8 @@ public class Main extends PApplet {
 		imageFrame.setBounds(0, 10, 1100, 1000);
 
 		ConnectionManager.connect(remoteAddress, port);
-		CustomRecognizer.init(0.7f, 10, 4);
-
+		CustomRecognizer.init(0.7f, 10, imageCount);
+		
 		System.out.println("Setup finished.");
 	}
 }
