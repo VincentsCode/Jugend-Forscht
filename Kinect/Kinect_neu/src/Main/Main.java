@@ -26,11 +26,11 @@ public class Main extends PApplet {
 	}
 	
 	// Settings
-	private static String remoteAddress = "192.168.2.100";
+	private static String remoteAddress = "192.168.43.8";
 	private static int port = 1337;
 	private static int imageWidth = 640;
 	private static int imageHeight = 360;
-	private static int imageCount = 10;
+	private static int imageCount = 8;
 	
 	// Static variables
 	private static KinectPV2 kinect;
@@ -74,22 +74,26 @@ public class Main extends PApplet {
 		main.setup();
 
 		try {
-			Thread.sleep(8000);
+			Thread.sleep(6500);
+			
+			System.out.println("3");
+			Thread.sleep(500);
+			System.out.println("2");
+			Thread.sleep(500);
+			System.out.println("1");
+			Thread.sleep(500);
+			System.out.println("0");
 			
 			System.out.println("Bitte langsam im Kreis drehen");
 			
-			Thread.sleep(5000);
-			
-			System.out.println("Scan gestartet");
-			
 			ArrayList<Mat> images = new ArrayList<>();
 			
-			while (images.size() < 20) {
+			while (images.size() < imageCount) {
 				images.add(getImage());
-				Thread.sleep(600);
+				Thread.sleep(15000 / imageCount);
 			}
 			
-			CustomRecognizer.learn(images.toArray(new Mat[20]));
+			CustomRecognizer.learn(images.toArray(new Mat[imageCount]));
 			imageFrame.toFront();
 			
 			System.out.println("Nun loslaufen");
@@ -121,7 +125,7 @@ public class Main extends PApplet {
 			updateStream(ImageUtils.resize(colorImage, 640, 360));
 
 			try {
-				Thread.sleep(300);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
