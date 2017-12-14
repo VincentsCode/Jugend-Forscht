@@ -62,6 +62,10 @@ public class Robot {
 				
 				@Override
 				public void run() {
+					
+					mB.rotateTo(0);
+					mC.rotateTo(0);
+					
 					mA.close();
 					mB.close();
 					mC.close();
