@@ -116,7 +116,6 @@ public class BackgroundRecognizerService extends Service {
                             }
 
 
-
                             //Produkt-Liste vorlesen
                             if (results.get(i).toLowerCase().contains("Liste vorlesen".toLowerCase())) {
                                 found = true;
