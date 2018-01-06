@@ -1,21 +1,32 @@
 # Jugend-Forscht
 Privates Jufo Repository
 
-# Übersicht
-Android: Features überlegen <br>
-Arbeit: Zuende schreiben <br>
-Bilder: Noch keine Bilder vom neusten Prototyp <br>
-Kinect: Fertig <br>
-Präsentation: PowerPoint, Plakate, Vortrag, usw. noch nicht begonnen <br>
-EV3: Verbessern (siehe TODO)
+# Notitzen
+## Plakate
+ - alle Weiß <br>
+ - Zeitstrahl: Versionen des Roboters <br>
+ - Wichtigsten Teile der Software + kurze Erklärung <br>
+## Kostenaufstellung
+ - Prozessor: i5 7200U -> 30%																-> 60 € <br>
+ - Speicherbedarf: Windows (20GB); Kinect SDK (1GB); Software + DLLs (100MB) => 22GB		-> 2 € <br>
+ - Grafikkarte: -																			-> 0 € <br>
+ - RAM: 3 GB (mind. 2 -> Windows; Software -> 200MB)										-> 25 € <br>
+ - Kinect 																					-> 70 € <br>
+ - Akku: 																					-> 30 € <br>
+ - Elektro-Kleinkram:																		-> 20 € <br>
+ - Reifen + sonstiges Baumaterial															-> 5 € <br> <br>
 
-# TODO (sortiert nach Priorität)
+ -> 60 + 2 + 0 + 25 + 70 + 30 + 20 + 5 = ~250  <br>
 
-1. <b>Arbeit schreiben</b> <br>
-2. Bilder vom neusten Prototypen machen, ausschneiden und in Arbeit einfügen <br>
-3. Kommentare in Code schreiben <br>
-4. Präsentationen und Plakate vorbereiten <br>
-5. Weitere Identifikationsmerkmale hinzufügen <br>
-6. Perfekte Geschwindigkeiten herausfinden (Lenkung & Fahrgeschwindigkeit)
-7. Ideen für weitere App-Features sammeln <br>
-8. PowerBank für KinectSensor besorgen
+# TODO
+1. Arbeit:
+	"Software":
+		Grund für selbst-schreiben der Software
+	
+	"Optimierung der Hardware":
+		Preiserläuterung
+
+	"Optimierung der Software":
+		Alles
+
+2. PowerBank für KinectSensor besorgen
