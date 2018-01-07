@@ -1,18 +1,15 @@
 # Jugend-Forscht
-Privates Jufo Repository
+Privates Jufo Repository <br>
 
-# Notitzen
-## Plakate
+# Notizen
+## Plakate <br>
  - alle Weiß <br>
  - Zeitstrahl: Versionen des Roboters <br>
  - Wichtigsten Teile der Software + kurze Erklärung <br>
 
 # TODO
-1. Arbeit:
-	"Software":
-		Grund für selbst-schreiben der Software + ALLES
-
-	"Optimierung der Software":
-		Alles
-
-2. PowerBank für KinectSensor besorgen
+1. Arbeit: <br>
+	1.1: "Optimierung der Software" schreiben <br>
+	1.2: Korrekturlesen lassen <br>
+2. Software optimieren + Kommentare <br>
+3. PowerBank für KinectSensor besorgen
