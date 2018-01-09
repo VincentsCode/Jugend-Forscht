@@ -2,7 +2,7 @@
 Privates Jufo Repository <br>
 
 # TODO
-1. Software optimieren + Kommentare <br>
+1. Software optimieren (evtl. WLAN-Verbindung umschreiben) + Kommentare <br>
 2. PowerBank für KinectSensor besorgen <br>
 
 # Notizen
