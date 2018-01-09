@@ -1,4 +1,4 @@
-# Jugend-Forscht
+# Jugend forscht
 Privates Jufo Repository <br>
 
 # TODO
