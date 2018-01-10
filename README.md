@@ -12,11 +12,11 @@ Privates Jufo Repository <br>
  - Wichtigsten Teile der Software + kurze Erklärung <br>
 
 
-#ABLAUF VORTRAG: <br>
+ABLAUF VORTRAG: <br>
 <br>
-##1. Wir stellen uns vor <br>
-##2. Einführung (wie kamen wir auf die Idee? ; Wie gehen wir vor?)<br>
-##3. Vorstellung des Projekts im Wechseltakt "Prototyp - Programmierung"<br>
+1. Wir stellen uns vor <br>
+2. Einführung (wie kamen wir auf die Idee? ; Wie gehen wir vor?)<br>
+3. Vorstellung des Projekts im Wechseltakt "Prototyp - Programmierung"<br>
 <br>
 -> Prototyp 1 (Grundlage/ erster Versuch) + (BILD AM BEAMER) ---------------------------------------------- BEMERKUNG: Übergänge zwischen den Prototypen (Probleme/ Lösungen)<br>
 -> Prototyp 2 (Grundlage) + (BILD AM BEAMER) -------------------------------------------------------------- BEMERKUNG: kurze Definition des EV3s und seiner Komponenten <br>
@@ -50,7 +50,7 @@ Privates Jufo Repository <br>
 		- Sprachbefehle (Wie funktioniert die Spracherkennung<br>
 		- Einstellungen (Notruffunktion)<br>
 			<br>
-##4. DISKUSSION<br>
+4. DISKUSSION<br>
 <br>
 -> Hervorhebung der Länge des Projekts und der vielen Versuche -------------------------------------------- BEMERKUNG: Verflüssigung der beiden Themen<br>
 -> Probleme bei der Umsetzung (evl. BEAMER)<br>
