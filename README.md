@@ -18,8 +18,10 @@ ABLAUF VORTRAG: <br>
 2. Einführung (wie kamen wir auf die Idee? ; Wie gehen wir vor?)<br>
 3. Vorstellung des Projekts im Wechseltakt "Prototyp - Programmierung"<br>
 <br>
--> Prototyp 1 (Grundlage/ erster Versuch) + (BILD AM BEAMER) ---------------------------------------------- BEMERKUNG: Übergänge 										zwischen den Prototypen (Probleme/ Lösungen)<br>
--> Prototyp 2 (Grundlage) + (BILD AM BEAMER) -------------------------------------------------------------- BEMERKUNG: kurze 											Definition des EV3s und seiner Komponenten <br>
+-> Prototyp 1 (Grundlage/ erster Versuch) + (BILD AM BEAMER) ---------------------------------------------- BEMERKUNG:
+--------------------------------------------------------------------Übergäng zwischen den Prototypen (Probleme/ Lösungen)<br>
+-> Prototyp 2 (Grundlage) + (BILD AM BEAMER) -------------------------------------------------------------- BEMERKUNG: 
+------------------------------------------------------------------------kurze Definition des EV3s und seiner Komponenten <br>
 -> Prototyp 3 (Treppensteigen) (BILD AM BEAMER - dabei besonders auf das Treppensteigen eingehen)<br>
 -> Prototyp 4 (vollkommener Neuaufbau des Roboters) + (BILD AM BEAMER)<br>
 	-> Programmierung Prototyp 4 + EV3 Software (BEAMER: <br>
@@ -45,17 +47,17 @@ ABLAUF VORTRAG: <br>
 		-> Wieso zu C++ gewechselt? (BEAMER: ARGUMENTE AUFLISTEN<br>
 		-> neue Methode der Personerkennung<br>
 		-> kurzer Einblick in die genutzten Bibliotheken<br>
-	3. App (BEAMER: Bilder der Interfaces) ---------------------------------------------------------------- BEMERKUNG: 											Übergang zwischen Prototyp 6 und App <br>
+	3. App (BEAMER: Bilder der Interfaces) ---------------------------------------------------------------- BEMERKUNG: 	------------------------------------------------------------------------------------Übergang zwischen Prototyp 6 und App <br>
 	- Vorteile der App bzw. Funktionen<br>
 	- Sprachbefehle (Wie funktioniert die Spracherkennung<br>
 	- Einstellungen (Notruffunktion)<br>
 		<br>
 4. DISKUSSION<br>
 <br>
-	-> Hervorhebung der Länge des Projekts und der vielen Versuche -------------------------------------------- BEMERKUNG: 											Verflüssigung der beiden Themen<br>
+	-> Hervorhebung der Länge des Projekts und der vielen Versuche -------------------------------------------- BEMERKUNG: 	-------------------------------------------------------------------------------------------Verflüssigung der beiden Themen<br>
 	-> Probleme bei der Umsetzung (evl. BEAMER)<br>
 	-> Vorstellung der Weiterentwicklungsmöglichkeiten (BEAMER: Auflistung der Weiterentwicklungmöglichkeiten)<br>
 	<br>
 	-> FRAGE AN JUROREN:  <br>
 		- Ihre Gedanken zum Roboter? <br>
-		- Weitere Fragen? --------------------------------------------------------------------------------- BEMERKUNG: 								Vorbereitung auf Fragen -> welche Fragen könnten gestellt werden?
+		- Weitere Fragen? --------------------------------------------------------------------------------- BEMERKUNG: 	--------------------------------------------------------------Vorbereitung auf Fragen -> welche Fragen könnten gestellt werden?
