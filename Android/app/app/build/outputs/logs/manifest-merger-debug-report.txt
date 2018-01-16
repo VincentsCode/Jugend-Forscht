@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
 MERGED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\568a676f339cb4f811314809aea60979\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:transition:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c3b819da519e527761435d9cf2a9c02c\AndroidManifest.xml:17:1-28:12
@@ -19,47 +19,47 @@ MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\vince\.gradle\
 MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\63777caaf5b285f5cf3cb4940f50815e\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\1193c02bae83b3bc630810fc7565060e\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\acc042806bc1452af26a49437ff154df\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
 	package
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:4:5-34
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:4:5-34
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:1-43:12
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:6:5-71
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:6:5-71
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:6:22-68
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:6:22-68
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:7:5-81
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:7:22-78
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:7:22-78
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:8:5-68
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:8:5-68
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:8:22-65
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:8:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:9:5-74
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:9:5-74
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:9:22-71
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:9:22-71
 uses-permission#android.permission.SEND_SMS
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:10:5-66
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:10:5-66
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:10:22-64
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:10:22-64
 application
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:12:5-41:19
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:12:5-41:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\568a676f339cb4f811314809aea60979\AndroidManifest.xml:25:5-29:19
@@ -91,59 +91,59 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\vince\.gradle\c
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\acc042806bc1452af26a49437ff154df\AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\acc042806bc1452af26a49437ff154df\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:16:9-41
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:16:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:14:9-41
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:14:9-41
 	tools:ignore
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:19:9-48
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:19:9-48
 	android:icon
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:15:9-38
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:15:9-38
 	android:allowBackup
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:18:9-40
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:18:9-40
 activity#jufo.vincent.de.app.MainActivity
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:20:9-30:20
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:20:9-30:20
 	android:screenOrientation
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:23:13-49
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:23:13-49
 	android:label
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:22:13-45
 	android:theme
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:24:13-56
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:24:13-56
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:21:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:28:27-74
 service#jufo.vincent.de.app.BackgroundRecognizerService
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:32:9-36:46
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:32:9-36:46
 	android:enabled
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:34:13-35
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:34:13-35
 	android:exported
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:35:13-36
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:35:13-36
 	tools:ignore
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:36:13-43
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:36:13-43
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:33:13-56
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:33:13-56
 activity#jufo.vincent.de.app.SettingsActivity
-ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:38:9-40:63
+ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:38:9-40:63
 	android:label
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:40:13-60
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:40:13-60
 	android:name
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml:39:13-45
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml:39:13-45
 uses-sdk
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\568a676f339cb4f811314809aea60979\AndroidManifest.xml:21:5-23:78
@@ -174,18 +174,18 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\vince\.gradle\c
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\1193c02bae83b3bc630810fc7565060e\AndroidManifest.xml:21:5-23:58
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\acc042806bc1452af26a49437ff154df\AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\acc042806bc1452af26a49437ff154df\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\vince\Desktop\Jugend Forscht\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\app\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
 ADDED from [com.android.support:design:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\0af8ad54628c46e2ff0775a8f73ade01\AndroidManifest.xml:26:9-28:38
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\vince\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\568a676f339cb4f811314809aea60979\AndroidManifest.xml:26:9-28:38

@@ -29,6 +29,21 @@
                     }
                 }
             ]
+        },
+        {
+            "outputFile": "C:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v18\\values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\vince\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\568a676f339cb4f811314809aea60979\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
         }
     ]
 }

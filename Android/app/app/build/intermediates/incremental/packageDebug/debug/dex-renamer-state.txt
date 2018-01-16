@@ -1,4 +1,19 @@
-#Thu Nov 16 17:17:57 CET 2017
-base.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Thu Jan 11 17:55:26 CET 2018
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+base.5=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
+base.4=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\17
+base.3=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+base.2=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\15
+base.1=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
+base.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\16
+file.5=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14\\classes.dex
+file.4=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\17\\classes.dex
+file.3=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12\\classes.dex
+file.2=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\15\\classes.dex
+file.1=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13\\classes.dex
+file.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\16\\classes.dex
