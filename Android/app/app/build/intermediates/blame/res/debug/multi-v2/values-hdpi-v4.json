@@ -31,6 +31,22 @@
                     }
                 }
             ]
+        },
+        {
+            "outputFile": "C:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\vince\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\568a676f339cb4f811314809aea60979\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
         }
     ]
 }

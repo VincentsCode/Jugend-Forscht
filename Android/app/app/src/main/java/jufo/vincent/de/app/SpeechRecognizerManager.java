@@ -46,11 +46,8 @@ class SpeechRecognizerManager {
         if (!mIsListening) {
             mIsListening = true;
             if (!mIsStreamSolo) {
-                mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
-                mAudioManager.setStreamMute(AudioManager.STREAM_ALARM, true);
                 mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, true);
-                mAudioManager.setStreamMute(AudioManager.STREAM_RING, true);
-                mAudioManager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
                 mIsStreamSolo = true;
             }
             mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
@@ -61,11 +58,8 @@ class SpeechRecognizerManager {
     void destroy() {
         mIsListening = false;
         if (!mIsStreamSolo) {
-            mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-            mAudioManager.setStreamMute(AudioManager.STREAM_ALARM, false);
             mAudioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
-            mAudioManager.setStreamMute(AudioManager.STREAM_RING, false);
-            mAudioManager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC / 2), 0);
             mIsStreamSolo = true;
         }
         if (mSpeechRecognizer != null) {
