@@ -1,6 +1,0 @@
-Prototypen: Fabian
-Software: Vincent
-Erweiterungen: 
-	Software: Vincent
-	Hardware: Fabian
-Unser Projektablauf: Fabian
