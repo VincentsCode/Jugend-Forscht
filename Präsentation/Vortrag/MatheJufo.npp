@@ -34,3 +34,8 @@ y = (a^2 - ((a^2 + c^2 - b^2 ) / 2c))^2)^0,5
 Normierung von Vektor AB:
 
 Vektor AB normiert = (1 / c) * Vektor (Bx - Ax | By - Ay)
+-> mit x multiplizieren um Vektor zu erhalten
+-> Senkrechten normierten Vektor zu Vektor x ziehen
+-> = Vektor y 
+
+=> Alle benötigten Vektoren addieren = Q1
