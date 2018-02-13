@@ -1,0 +1,35 @@
+Gegeben: 
+ - U (Ursprung)
+ 
+ - a (Radius von Kreis 1)
+ - b (Radius von Kreis 2)
+ 
+ - A (Mittelpunkt von Kreis 1)
+ - B (Mittelpunkt von Kreis 2)
+ 
+
+Variablen:
+- Winkel alpha
+- x 
+- c (Strecke AB)
+- y (Senkrechte von Strecke AB zu Q1)
+
+
+ 
+ Rechnung:
+
+c = ((Bx - Ax)^2 + (By - Ay)^2)^0,5
+
+Cosinussatz:
+	b^2 = a^2 + c^2 - 2ac * cos(alpha);
+	cos(alpha) = x / a;
+		-> 	b^2 = a^2 + c^2 - 2ac * (x / a)
+			<=> b^2 = a^2 + c^2 - 2c * x 
+			<=> 2cx = a^2 + c^2 - b^2 
+			<=> x = (a^2 + c^2 - b^2 ) / 2c 
+
+y = (a^2 - x^2)^0,5
+y = (a^2 - ((a^2 + c^2 - b^2 ) / 2c))^2)^0,5
+
+Normierung von Vektor AB:
+... (Schaffe ich heute nicht mehr)
