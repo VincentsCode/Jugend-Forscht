@@ -38,3 +38,6 @@ Wie genau habt ihr das gelernt? (FABIAN)
 	
 Mal im Ernst, ihr habt das doch nicht den alten Menschen zuliebe gemacht, oder? (VINCENT)
 	-	Nein. 
+
+Wie sieht es aus bei Regen?
+	- Man könnte eine Haube über der Tragfläche des Roboters befestigen. Da es sich bei unserem Roboter aber nur um einen Prototyp handelt und er aus LEGO Bausteinen gebaut ist, setzten wir dies nicht in die Realität um
