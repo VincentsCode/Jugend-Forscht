@@ -1,5 +1,5 @@
 Gegeben: 
- - U (Ursprung)
+ - O (Ursprung)
  
  - a (Radius von Kreis 1)
  - b (Radius von Kreis 2)
@@ -34,8 +34,14 @@ y = (a^2 - ((a^2 + c^2 - b^2 ) / 2c))^2)^0,5
 Normierung von Vektor AB:
 
 Vektor AB normiert = (1 / c) * Vektor (Bx - Ax | By - Ay)
--> mit x multiplizieren um Vektor zu erhalten
--> Senkrechten normierten Vektor zu Vektor x ziehen
--> = Vektor y 
 
-=> Alle benötigten Vektoren addieren = Q1
+Vektor an Strecke x = AB normiert * x 
+Vektor an Strecke y = y * (1 / c) * Vektor (-(By - Ay) | Bx - Ax)
+
+Q1,x 	= Ax + x * (Bx - Ax) / c + y * (-(By - Ay)) / c 
+		= Ax + x * (Bx - Ax) / c + y * (Ay - By) / c 
+
+
+Q1,y 	= Ay + x * (By - Ay) / c + y * (-(Bx - Ax)) / c 
+		= Ay + x * (By - Ay) / c + y * (Ax - Bx)) / c
+		
