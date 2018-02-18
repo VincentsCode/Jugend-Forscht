@@ -42,6 +42,6 @@ Q1,x 	= Ax + x * (Bx - Ax) / c + y * (-(By - Ay)) / c
 		= Ax + x * (Bx - Ax) / c + y * (Ay - By) / c 
 
 
-Q1,y 	= Ay + x * (By - Ay) / c + y * (-(Bx - Ax)) / c 
-		= Ay + x * (By - Ay) / c + y * (Ax - Bx)) / c
+Q1,y 	= Ay + x * (By - Ay) / c + y * (Bx - Ax) / c 
+		
 		
