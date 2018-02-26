@@ -1,5 +1,5 @@
 # Jugend forscht
-Privates Jufo Repository <br>
+Privates Jufo Repository [REGIONALSIEGER]<br>
 
 # TODO
  - Neue Motoren -> Hr. Kargels fragen was benötigt/gut & Hr. Ossmann fragen bzgl. Geld
