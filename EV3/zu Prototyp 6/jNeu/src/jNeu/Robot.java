@@ -14,6 +14,7 @@ import lejos.remote.nxt.NXTConnection;
 
 public class Robot {
 	
+	// varaibles
 	public static boolean bluetoothConnected = false;
 	public static boolean wlanConnected = false;
 	
@@ -21,56 +22,66 @@ public class Robot {
 	public static int xPosition = 0;
 	public static boolean stop = true;
 	
-	private int driveSpeed = 0;
 	private int controlSpeed = 600;
 	
+	// constants
 	private final NXTRegulatedMotor motorA = Motor.A;
 	private final NXTRegulatedMotor motorB = Motor.B;
 	private final NXTRegulatedMotor motorC = Motor.C;
 	private final NXTRegulatedMotor motorD = Motor.D;
 	
 	Robot() {
-		motorA.setSpeed(driveSpeed);
+		// starts the motors
 		motorB.setSpeed(controlSpeed);
 		motorC.setSpeed(controlSpeed);
-		motorD.setSpeed(driveSpeed);
 		
+		// starts wlan- and bluetooth-thread
 		new wlanThread(1337).start();
 		new bluetoothThread().start();
 		
+		// loop
 		while (true) {
+			// checks if laptop and smartphone are connected
 			if (wlanConnected && bluetoothConnected) {
+				// checks if the person is far enough away and the robot is not told to stop
 				if (zPosition > 300 && !stop) {
-					
-					if (xPosition > 30 || xPosition < -30) {
-						double d1 = (double) xPosition / 960d;
-						System.out.println("D1: " + d1);
-						double d2 = 84.1 / 2; // 84.1 => FOV of the Sensor; FOV / 2 -> FOV / Seite;
-						System.out.println("D2: " + d2);
-						double angle = d1 * d2;
-						motorB.rotateTo((int) -angle  * 8, true); // angle * 8 => gearbox
-						motorC.rotateTo((int) angle * 8, false);
-						System.out.println("Rotated to: " + angle + " (xPosition = " + xPosition + ")");
-					} else {
-						motorB.rotateTo(0, true);
-						motorC.rotateTo(0, false);
-					}
+					// apply new speed
+					motorA.setSpeed(zPosition);
+					motorD.setSpeed(zPosition);
+						
+					// if person is not in front of robot: calculate angle and rotate to
+					double angle = ((double) xPosition / 960d) * (84.1 / 2); // 84.1 => FOV; FOV / 2 -> FOV / Seite; angle *-1 => mirror-inverted
+					motorB.rotateTo((int) -angle  * 8, true); // angle * 8 => gearbox
+					motorC.rotateTo((int) angle * 8, false);
+					System.out.println("Rotated to: " + angle + " (xPosition = " + xPosition + ")");
 
-					motorA.backward();
-					motorD.backward();
+					if (!motorA.isMoving() || !motorD.isMoving()) {
+						motorA.backward();
+						motorD.backward();
+					}
 				} else {
+					// robot is told to stop or person is to close
 					System.out.println(zPosition);
 					System.err.println(stop);
+					motorA.setSpeed(0);
+					motorD.setSpeed(0);
 					motorA.stop();
 					motorD.stop();
 				}
+			} else {
+				// smartphone or laptop are disconnected
+				System.out.println("Waiting for connection: wlan-state: " + wlanConnected + ", bluetooth-state: " + bluetoothConnected);
 			}
 		}
 	}
 	
+	// continuously checks for new data over wlan
 	class wlanThread extends Thread {
 		
 		private int port;
+		private ServerSocket serverSocket;
+		private Socket client;
+		private BufferedReader reader;
 		
 		wlanThread(int port) {
 			this.port = port;
@@ -80,9 +91,9 @@ public class Robot {
 		public void run() {
 			try {
 				System.out.println("wlanThread started.");
-	            ServerSocket serverSocket = new ServerSocket(port);
-	            Socket client = serverSocket.accept();
-	            BufferedReader reader =  new BufferedReader(new InputStreamReader(client.getInputStream()));
+	            serverSocket = new ServerSocket(port);
+	            client = serverSocket.accept();
+	            reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				wlanConnected = true;
 				System.out.println("Laptop connected.");
 	            while (true) {
@@ -101,6 +112,7 @@ public class Robot {
 		} 
 	}
 	
+	// continuously checks for new data over bluetooth
 	class bluetoothThread extends Thread {
 		
 		private BTConnector connector;
@@ -130,14 +142,11 @@ public class Robot {
 							System.out.println("Received uncommon message: " + message.toLowerCase());
 						}
 					}
+		
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}	
 	}
-}
-
-public static void main(String[] args) {
-	new Robot();
 }
