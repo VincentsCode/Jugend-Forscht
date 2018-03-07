@@ -2,7 +2,7 @@
 Privates Jufo Repository [REGIONALSIEGER]<br>
 
 # TODO
- - Neue Motoren -> Hr. Kargels fragen was benötigt/gut & Hr. Ossmann fragen bzgl. Geld
+ - Neue Motoren -> Hr. Kagels fragen was benötigt/gut & Hr. Ossmann fragen bzgl. Geld
  - Handgeschriebene Einkaufauslisten importieren ( -> NN (MNIST?) )
  - Sprachsteuerung erweitern
  - "Stopp" & minDist fixen
