@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "GPS activated?", Toast.LENGTH_SHORT).show();
             return;
         }
-        ((TextView)findViewById(R.id.textView)).setText("latitude: " + lat);
-        ((TextView)findViewById(R.id.textView2)).setText("longitude: " + lon);
+        ((TextView)findViewById(R.id.textView)).setText(String.format("Latitude: %s", lat));
+        ((TextView)findViewById(R.id.textView2)).setText(String.format("Longitude: %s", lon));
     }
 }

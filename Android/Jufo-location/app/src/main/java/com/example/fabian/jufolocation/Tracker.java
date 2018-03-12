@@ -20,9 +20,6 @@ public class Tracker extends Service implements LocationListener {
     LocationManager locationManager;
     Location location = null;
 
-    public Tracker() {
-    }
-
     public Tracker(Context context) {
         this.context = context;
         location = locate();
@@ -34,19 +31,12 @@ public class Tracker extends Service implements LocationListener {
 
         try {
             locationManager = (LocationManager) this.context.getSystemService(LOCATION_SERVICE);
+            assert locationManager != null;
             boolean isGPSActive = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             boolean isNetActive = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
             if (isGPSActive) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return null;
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 }
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 20, this);
                 location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
