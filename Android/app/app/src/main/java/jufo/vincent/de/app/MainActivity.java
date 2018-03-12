@@ -42,6 +42,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 @SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
 
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Creates NotificationBuilder
         Builder = new NotificationCompat.Builder(context);
-        Manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Manager = (NotificationManager) context.getSystemService();
         Builder.setPriority(Notification.PRIORITY_MAX);
         Builder.setSmallIcon(R.drawable.icon);
 
