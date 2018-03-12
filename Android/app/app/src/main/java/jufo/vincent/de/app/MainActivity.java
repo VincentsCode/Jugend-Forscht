@@ -85,14 +85,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Einkaufsliste");
 
-
-
         //Gets old List
         list_pref = getSharedPreferences("Einkaufsliste", 0);
         list_editor = list_pref.edit();
         list_editor.apply();
-
-
 
         context = this;
 
