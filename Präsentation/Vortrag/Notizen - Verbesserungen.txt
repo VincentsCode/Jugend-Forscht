@@ -1,6 +1,0 @@
-Karteikarten
-Begründung Kinect: LegoIR-Sensoren sind nur 2D (Kreise) und dadurch ungenau + Fernbedienung muss getragen werden || Kinect ist sehr genau + nichts beim Nutzer
-Vergleich v1 & v2 -> Vorteiel und Notwendigkeit der Entwicklung von v2 auf komplett neuer Basis
-Software 2 -> Trägheit -> Weniger Fehler || grundsätzlich mehr zu tracking verfahren, dafür weniger/kein/nur pseudo- code
-Mehr zu Prototypen -> Prototypen Entwicklung nach Ablaufplanung
-Jeder stellt das vor, was er gemacht hat (50|50 ist unwichtig)

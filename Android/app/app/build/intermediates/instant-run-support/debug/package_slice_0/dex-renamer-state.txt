@@ -1,4 +1,0 @@
-#Thu Jan 11 17:55:15 CET 2018
-base.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-renamed.0=classes.dex
-file.0=C\:\\Users\\vince\\Desktop\\Jugend Forscht [PRIVATE]\\Android\\app\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex
