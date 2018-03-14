@@ -36,8 +36,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="170">
               <caret line="227" column="64" lean-forward="false" selection-start-line="227" selection-start-column="64" selection-end-line="227" selection-end-column="64" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="1444">
+              <caret line="497" column="5" lean-forward="true" selection-start-line="497" selection-start-column="5" selection-end-line="497" selection-end-column="5" />
+=======
+            <state relative-caret-position="162">
+              <caret line="476" column="46" lean-forward="true" selection-start-line="476" selection-start-column="46" selection-end-line="476" selection-end-column="46" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
               <folding />
             </state>
           </provider>
@@ -62,10 +72,59 @@
       </file>
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+<<<<<<< HEAD
+=======
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="170">
+              <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+=======
+            <state relative-caret-position="606">
+              <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="533">
+              <caret line="147" column="9" lean-forward="true" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+              <folding>
+                <element signature="e#741#773#0" expanded="false" />
+                <element signature="e#1655#2026#0" expanded="true" />
+                <element signature="e#2025#2026#0" expanded="true" />
+                <element signature="e#2082#2831#0" expanded="true" />
+                <element signature="e#2830#2831#0" expanded="true" />
+                <element signature="e#2884#3091#0" expanded="true" />
+                <element signature="e#3090#3091#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="BackgroundRecognizerService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <folding>
+                <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+=======
+      <file leaf-file-name="Kamera.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/Kamera.java">
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="436">
               <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
               <folding>
+<<<<<<< HEAD
                 <marker date="1521040249558" expanded="true" signature="2226:2244" ph="..." />
               </folding>
             </state>
@@ -73,6 +132,53 @@
           <provider editor-type-id="android-manifest">
             <state />
           </provider>
+=======
+                <element signature="e#2393#2394#0" expanded="false" />
+                <element signature="e#2431#2432#0" expanded="false" />
+                <element signature="e#2523#2524#0" expanded="false" />
+                <element signature="e#2561#2562#0" expanded="false" />
+                <element signature="e#3048#3049#0" expanded="false" />
+                <element signature="e#3084#3085#0" expanded="false" />
+                <element signature="e#10488#10489#0" expanded="false" />
+                <element signature="e#10533#10534#0" expanded="false" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+=======
+      <file leaf-file-name="activity_main2.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1513">
+              <caret line="89" column="43" lean-forward="false" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+<<<<<<< HEAD
+=======
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
         </entry>
       </file>
       <file leaf-file-name="activity_camera.xml" pinned="false" current-in-tab="false">
@@ -83,8 +189,28 @@
               <folding />
             </state>
           </provider>
+<<<<<<< HEAD
+=======
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+        </entry>
+      </file>
+      <file leaf-file-name="activity_kamera.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_kamera.xml">
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
           <provider editor-type-id="android-designer2">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PermissionHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/PermissionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -2227,10 +2353,56 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+<<<<<<< HEAD
+      <pane id="Scratches" />
+=======
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2382,7 +2554,15 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+<<<<<<< HEAD
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521045072098" />
+=======
+<<<<<<< HEAD
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520979947155" />
+=======
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521026837485" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2430,7 +2610,15 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+<<<<<<< HEAD
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521045072098" />
+=======
+<<<<<<< HEAD
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520979947155" />
+=======
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521026837485" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2613,7 +2801,15 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+<<<<<<< HEAD
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521045072099" />
+=======
+<<<<<<< HEAD
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520979947156" />
+=======
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521026837486" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       </method>
     </configuration>
     <list size="2">
@@ -2670,10 +2866,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="1912" y="83" width="1296" height="1000" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+=======
+<<<<<<< HEAD
+    <frame x="-8" y="22" width="1936" height="1066" extended-state="7" />
+    <layout>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="1912" y="83" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32962137" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3993576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2755,6 +2975,178 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#712#744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5491">
+          <caret line="465" column="0" lean-forward="false" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="109" selection-end-column="75" />
+          <folding>
+            <element signature="e#712#744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="42" lean-forward="false" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="58" column="54" lean-forward="false" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5491">
+          <caret line="465" column="0" lean-forward="false" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="109" selection-end-column="75" />
+          <folding>
+            <element signature="e#712#744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="42" lean-forward="false" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="58" column="54" lean-forward="true" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="11" lean-forward="true" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="109" selection-end-column="75" />
+          <folding>
+            <element signature="e#741#773#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="42" lean-forward="false" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="51" column="72" lean-forward="true" selection-start-line="51" selection-start-column="72" selection-end-line="51" selection-end-column="72" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2791,6 +3183,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/AppCompatPreferenceActivity.java" />
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/local.properties">
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/PermissionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -2800,6 +3195,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local.properties" />
     <entry file="file://$PROJECT_DIR$/settings.gradle">
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2857,24 +3253,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
         <state relative-caret-position="306">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SpeechRecognizerManager.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
         <state relative-caret-position="493">
           <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
           <folding />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/BackgroundRecognizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="1037">
+          <caret line="73" column="57" lean-forward="true" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/jufo/vincent/de/app/ExampleInstrumentedTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
         </state>
       </provider>
     </entry>
@@ -2904,6 +3332,29 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1024">
+          <caret line="91" column="42" lean-forward="false" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_sync_black_24dp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2940,11 +3391,18 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-26/android.jar!/android/media/ImageReader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings.xml">
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+      <provider editor-type-id="android-designer2">
+        <state />
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_kamera.xml" />
@@ -2958,6 +3416,9 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -2967,8 +3428,12 @@
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+<<<<<<< HEAD
     </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-26/android.jar!/android/telephony/SmsManager.class">
+=======
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
@@ -2987,7 +3452,38 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SettingsActivity.java">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/SpeechRecognizerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <marker date="1516049676882" expanded="true" signature="1531:1924" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/PermissionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+          <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/Main2Activity.java">
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="147" column="5" lean-forward="false" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
@@ -3062,15 +3558,39 @@
             <element signature="e#3109#3110#0" expanded="false" />
             <element signature="e#3147#3148#0" expanded="false" />
           </folding>
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="436">
           <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
           <folding>
             <marker date="1521040249558" expanded="true" signature="2226:2244" ph="..." />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="441">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding>
+            <element signature="method#onStartCommand#0;class#BackgroundRecognizerService#0" expanded="false" />
+=======
+        <state relative-caret-position="533">
+          <caret line="147" column="9" lean-forward="true" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+          <folding>
+            <element signature="e#741#773#0" expanded="false" />
+            <element signature="e#1655#2026#0" expanded="true" />
+            <element signature="e#2025#2026#0" expanded="true" />
+            <element signature="e#2082#2831#0" expanded="true" />
+            <element signature="e#2830#2831#0" expanded="true" />
+            <element signature="e#2884#3091#0" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
           </folding>
         </state>
       </provider>
@@ -3080,8 +3600,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/jufo/vincent/de/app/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="170">
           <caret line="227" column="64" lean-forward="false" selection-start-line="227" selection-start-column="64" selection-end-line="227" selection-end-column="64" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="1444">
+          <caret line="497" column="5" lean-forward="true" selection-start-line="497" selection-start-column="5" selection-end-line="497" selection-end-column="5" />
+=======
+        <state relative-caret-position="162">
+          <caret line="476" column="46" lean-forward="true" selection-start-line="476" selection-start-column="46" selection-end-line="476" selection-end-column="46" />
+>>>>>>> f9cc94a66e4f4faf2a7228469b3bbd1dde1aa75f
+>>>>>>> 941ebff9c042eead40858a9d02fc50f68258fa95
           <folding />
         </state>
       </provider>
