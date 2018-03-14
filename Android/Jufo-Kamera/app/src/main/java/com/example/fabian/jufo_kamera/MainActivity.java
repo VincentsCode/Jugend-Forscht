@@ -38,10 +38,8 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -174,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             builder.addTarget(output);
             builder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON);
             builder.set(CaptureRequest.CONTROL_AWB_MODE, CaptureRequest.CONTROL_AWB_MODE_AUTO);
-            builder.set(CaptureRequest.FLASH_MODE, FLA.FLASH_MODE_SINGLE);
+
 
             final File file = new File(Environment.getExternalStorageDirectory() + "/meinBild.jpg");
             ImageReader.OnImageAvailableListener onImageAvailableListener = new ImageReader.OnImageAvailableListener() {

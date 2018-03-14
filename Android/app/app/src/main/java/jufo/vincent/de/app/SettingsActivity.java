@@ -142,11 +142,9 @@ public class SettingsActivity extends AppCompatActivity {
         if (lon == 0) {
             Toast.makeText(this, "GPS aktiviert??", Toast.LENGTH_SHORT).show();
             return 0;
-        }
-        else {
+        } else {
             return lon;
         }
-
     }
 
     @Override

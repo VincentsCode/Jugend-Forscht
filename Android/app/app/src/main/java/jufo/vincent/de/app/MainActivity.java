@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     static String emergencyNumber;
     static String EmergencyMessage;
+    private double latitude;
+    private double longitude;
 
 
     @Override
@@ -473,20 +475,22 @@ public class MainActivity extends AppCompatActivity {
     //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
 
-        SettingsActivity settingsActivity = new SettingsActivity();
-        double latitude = settingsActivity.locateMelat();
-        double longitude = settingsActivity.locateMelon();
 
         //Gets the Settings and assigns it to local variables
         settings_pref = context.getSharedPreferences("Einstellungen", 0);
-  ;
         emergencyNumber = settings_pref.getString("Number", "");
         EmergencyMessage = settings_pref.getString("Message", "");
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage + "\n Latitude: " + latitude + "\n Longitude: " + longitude, null, null);
+        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
     }
 
 
+
+
+    public void openCam(View view) {
+        Intent intent = new Intent(this, Camera.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onDestroy() {
@@ -518,3 +522,5 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
+// + "\n Latitude: " + lat + "\n Longitude: " + lon
+/**/

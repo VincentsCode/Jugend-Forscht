@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -43,13 +44,14 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Kamera" />
-
+        <activity android:name=".Camera" />
 
         <service
             android:name=".Tracker"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        
     </application>
 
 </manifest>
