@@ -1,6 +1,5 @@
 package jufo.vincent.de.app;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +40,7 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
+@SuppressWarnings("deprecation")
 @SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
 
@@ -77,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     static String emergencyNumber;
     static String EmergencyMessage;
-    private double latitude;
-    private double longitude;
 
 
     @Override
@@ -281,6 +278,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Starts the camera
+        FloatingActionButton fab2 = findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, CameraActivity.class);
+                startActivity(i);
+            }
+        });
+
         //Starts the SpeechRecognizerService
         startService();
 
@@ -298,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent i = new Intent(this, SettingsActivity.class);
+            Intent i = new Intent(getApplication(), SettingsActivity.class);
             startActivity(i);
             return true;
         }
@@ -430,14 +437,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Starts the SpeechRecognizerService
     private void startService() {
-        if (PermissionHandler.checkPermission(this, PermissionHandler.RECORD_AUDIO)) {
-            Intent i = new Intent(this, BackgroundRecognizerService.class);
-            startService(i);
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
-            Intent i = new Intent(this, BackgroundRecognizerService.class);
-            startService(i);
-        }
+        Intent i = new Intent(this, BackgroundRecognizerService.class);
+        startService(i);
     }
 
     //Sends a Message to the EV3
@@ -474,22 +475,20 @@ public class MainActivity extends AppCompatActivity {
 
     //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
-
-
         //Gets the Settings and assigns it to local variables
         settings_pref = context.getSharedPreferences("Einstellungen", 0);
         emergencyNumber = settings_pref.getString("Number", "");
         EmergencyMessage = settings_pref.getString("Message", "");
+        Tracker tracker = new Tracker(context);
+        double lat = tracker.getLatidude();
+        double lon = tracker.getLongitude();
+        if (lat != 0 || lon != 0) {
+            EmergencyMessage += "\n Position: Lat.: " + lat + " Lon.: " + lon;
+        } else {
+            Toast.makeText(context, "GPS aktiviert?", Toast.LENGTH_SHORT).show();
+        }
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
-    }
-
-
-
-
-    public void openCam(View view) {
-        Intent intent = new Intent(this, Camera.class);
-        startActivity(intent);
     }
 
     @Override
@@ -521,6 +520,3 @@ public class MainActivity extends AppCompatActivity {
         saveItems();
     }
 }
-
-// + "\n Latitude: " + lat + "\n Longitude: " + lon
-/**/

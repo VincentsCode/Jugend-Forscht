@@ -35,22 +35,27 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".CameraActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+
         <service
             android:name=".BackgroundRecognizerService"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedService" />
 
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".Camera" />
-
         <service
             android:name=".Tracker"
             android:enabled="true"
-            android:exported="true" />
-
+            android:exported="true"
+            tools:ignore="ExportedService" />
         
     </application>
 

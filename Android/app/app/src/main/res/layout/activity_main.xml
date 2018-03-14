@@ -12,7 +12,9 @@
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <Button
             android:id="@+id/add_btn"
@@ -42,6 +44,16 @@
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginBottom="90dp"
+        app:layout_anchor="@id/fab"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,8 +66,17 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -76,26 +97,6 @@
                 android:text="@string/weiter" />
 
         </android.support.design.widget.TabLayout>
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-        </android.support.v7.widget.Toolbar>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="openCam"
-            android:text="Cam"
-            android:id="@+id/Cam"
-
-            />
 
 
     </android.support.design.widget.AppBarLayout>
