@@ -4,26 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="jufo.vincent.de.app.Kamera">
+    tools:context="jufo.vincent.de.app.">
+
 
     <TextureView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/foto"
+        android:layout_above="@+id/foto"
         android:layout_alignParentTop="true"
-        android:id="@+id/texture"
-        />
-
+        android:id="@+id/texture" />
     <Button
+        android:id="@+id/foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/foto"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:text="take a photo"
-        />
-
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="picture" />
 </RelativeLayout>

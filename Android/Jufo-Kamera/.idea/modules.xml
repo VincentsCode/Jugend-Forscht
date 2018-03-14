@@ -3,10 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Jufo-Kamera.iml" filepath="$PROJECT_DIR$/Jufo-Kamera.iml" />
-      <module fileurl="file://C:\Users\Fabian\Desktop\GitHub\Jufo-private\Android\Jufo-Kamera\Jufo-Kamera.iml" filepath="C:\Users\Fabian\Desktop\GitHub\Jufo-private\Android\Jufo-Kamera\Jufo-Kamera.iml" />
       <module fileurl="file://C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\Jufo-Kamera\Jufo-Kamera.iml" filepath="C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\Jufo-Kamera\Jufo-Kamera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\Jufo-Kamera\app\app.iml" filepath="C:\Users\vince\Desktop\Jugend Forscht [PRIVATE]\Android\Jufo-Kamera\app\app.iml" />
-      <module fileurl="file://C:\Users\Fabian\Desktop\GitHub\Jufo-private\Android\Jufo-Kamera\app\app.iml" filepath="C:\Users\Fabian\Desktop\GitHub\Jufo-private\Android\Jufo-Kamera\app\app.iml" />
     </modules>
   </component>
 </project>
