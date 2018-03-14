@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Einkaufsliste");
-
-
 
         //Gets old List
         list_pref = getSharedPreferences("Einkaufsliste", 0);
@@ -472,16 +472,24 @@ public class MainActivity extends AppCompatActivity {
 
     //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
+
+        SettingsActivity settingsActivity = new SettingsActivity();
+        double latitude = settingsActivity.locateMelat();
+        double longitude = settingsActivity.locateMelon();
+
         //Gets the Settings and assigns it to local variables
         settings_pref = context.getSharedPreferences("Einstellungen", 0);
+  ;
         emergencyNumber = settings_pref.getString("Number", "");
         EmergencyMessage = settings_pref.getString("Message", "");
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
+        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage + "\n Latitude: " + latitude + "\n Longitude: " + longitude, null, null);
     }
 
+
+
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         try {
             if (mSocket != null) { mSocket.close(); }
