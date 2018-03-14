@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -42,7 +44,12 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".Kamera" />
-        <activity android:name=".Main2Activity"></activity>
+
+
+        <service
+            android:name=".Tracker"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

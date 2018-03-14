@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -121,6 +122,31 @@ public class SettingsActivity extends AppCompatActivity {
         txt_message.setText(pref.getString("Message", ""));
         switch_speech.setChecked(pref.getBoolean("SpeechOn", true));
         switch_emergency.setChecked(pref.getBoolean("EmergencyOn", false));
+    }
+
+    public double locateMelat() {
+        Tracker tracker = new Tracker(this);
+        double lat = tracker.getLatidude();
+        if (lat == 0) {
+            Toast.makeText(this, "GPS aktiviert??", Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+        else {
+            return lat;
+        }
+
+    }
+    public double locateMelon() {
+        Tracker tracker = new Tracker(this);
+        double lon = tracker.getLongitude();
+        if (lon == 0) {
+            Toast.makeText(this, "GPS aktiviert??", Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+        else {
+            return lon;
+        }
+
     }
 
     @Override

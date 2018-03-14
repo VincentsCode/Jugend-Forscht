@@ -472,13 +472,18 @@ public class MainActivity extends AppCompatActivity {
 
     //Sends an SMS with a predefined Text to a predefined Number
     public static void sendEmergencySMS() {
+
+        SettingsActivity settingsActivity = new SettingsActivity();
+        double latitude = settingsActivity.locateMelat();
+        double longitude = settingsActivity.locateMelon();
+
         //Gets the Settings and assigns it to local variables
         settings_pref = context.getSharedPreferences("Einstellungen", 0);
   ;
         emergencyNumber = settings_pref.getString("Number", "");
         EmergencyMessage = settings_pref.getString("Message", "");
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage, null, null);
+        sms.sendTextMessage(emergencyNumber, null, EmergencyMessage + "\n Latitude: " + latitude + "\n Longitude: " + longitude, null, null);
     }
 
 
