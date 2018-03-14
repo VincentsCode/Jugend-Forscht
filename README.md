@@ -3,6 +3,6 @@ Privates Jufo Repository <br>
 
 # TODO
  - Neue Motoren einbauen + Software für RPi + Kinect-Senden-Funktion updaten
- - Sprachsteuerung fixen
- - Apps kombinieren
+ - App: Bild an Preview angleichen
+ - Handschrifterkennung verbessern
  - Vortrag erweitern + Üben
