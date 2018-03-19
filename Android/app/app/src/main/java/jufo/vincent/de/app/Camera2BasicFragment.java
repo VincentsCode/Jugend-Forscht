@@ -641,7 +641,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
     }
 
     private static class ImageSaver implements Runnable {
-        static String HOST = "192.168.2.109";
+        static String HOST = "192.168.43.242";
         static int PORT = 8050;
         private final Context mContext;
         private Image mImage;
