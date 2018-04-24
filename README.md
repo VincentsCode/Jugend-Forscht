@@ -1,6 +1,6 @@
-# Jugend forscht
-Privates Jufo Repository <br>
+# Jugend forscht 2018
+Jufo Repository <br>
 
 # TODO
- It's over ::0::
+ It's over ::0
  
